@@ -1,0 +1,23 @@
+# Secrets — never commit
+*.token
+*-token
+.bungie-token
+.dim-token
+.dim-apikey
+*.key
+.env*
+*secrets*
+
+# Personal raw data dumps (kept out of the public repo)
+dim-data*.json
+destiny-armor*.csv
+destiny-weapon*.csv
+destiny-ghost*.csv
+destinyLoadouts*.csv
+trash-list.md
+deleted-loadouts.txt
+
+# Runtime
+node_modules/
+*.log
+.DS_Store

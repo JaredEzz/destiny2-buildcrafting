@@ -1,0 +1,637 @@
+[
+ {
+  "file": "builds/subclasses/solar-dawnblade.md",
+  "name": "Eternal Embers — Dawn Chorus Ignition",
+  "loadout": {
+   "name": "Eternal Embers — Dawn Chorus Ignition",
+   "classType": 2,
+   "clearSpace": false,
+   "parameters": {},
+   "equipped": [
+    {
+     "hash": 3941205951,
+     "socketOverrides": {
+      "0": 2979486803,
+      "2": 2274196886,
+      "3": 1470370538,
+      "4": 1013086087,
+      "5": 83039193,
+      "6": 83039194,
+      "7": 1051276349,
+      "8": 1051276351,
+      "9": 362132288,
+      "10": 362132294
+     }
+    },
+    {
+     "hash": 2316914168
+    }
+   ],
+   "unequipped": []
+  },
+  "url": "https://app.destinyitemmanager.com/loadouts?loadout=%7B%22name%22%3A%22Eternal%20Embers%20%E2%80%94%20Dawn%20Chorus%20Ignition%22%2C%22classType%22%3A2%2C%22clearSpace%22%3Afalse%2C%22parameters%22%3A%7B%7D%2C%22equipped%22%3A%5B%7B%22hash%22%3A3941205951%2C%22socketOverrides%22%3A%7B%220%22%3A2979486803%2C%222%22%3A2274196886%2C%223%22%3A1470370538%2C%224%22%3A1013086087%2C%225%22%3A83039193%2C%226%22%3A83039194%2C%227%22%3A1051276349%2C%228%22%3A1051276351%2C%229%22%3A362132288%2C%2210%22%3A362132294%7D%7D%2C%7B%22hash%22%3A2316914168%7D%5D%2C%22unequipped%22%3A%5B%5D%7D"
+ },
+ {
+  "file": "builds/subclasses/arc-stormcaller.md",
+  "name": "Stormwrath — Geomag Chaos Reach",
+  "loadout": {
+   "name": "Stormwrath — Geomag Chaos Reach",
+   "classType": 2,
+   "clearSpace": false,
+   "parameters": {},
+   "equipped": [
+    {
+     "hash": 3168997075,
+     "socketOverrides": {
+      "0": 25156515,
+      "2": 1081893461,
+      "3": 1232050830,
+      "4": 2481624867,
+      "5": 1293395729,
+      "6": 1293395728,
+      "7": 1727069363,
+      "8": 1727069362,
+      "9": 3277705906,
+      "10": 1727069374,
+      "11": 1727069367
+     }
+    },
+    {
+     "hash": 121305948
+    }
+   ],
+   "unequipped": []
+  },
+  "url": "https://app.destinyitemmanager.com/loadouts?loadout=%7B%22name%22%3A%22Stormwrath%20%E2%80%94%20Geomag%20Chaos%20Reach%22%2C%22classType%22%3A2%2C%22clearSpace%22%3Afalse%2C%22parameters%22%3A%7B%7D%2C%22equipped%22%3A%5B%7B%22hash%22%3A3168997075%2C%22socketOverrides%22%3A%7B%220%22%3A25156515%2C%222%22%3A1081893461%2C%223%22%3A1232050830%2C%224%22%3A2481624867%2C%225%22%3A1293395729%2C%226%22%3A1293395728%2C%227%22%3A1727069363%2C%228%22%3A1727069362%2C%229%22%3A3277705906%2C%2210%22%3A1727069374%2C%2211%22%3A1727069367%7D%7D%2C%7B%22hash%22%3A121305948%7D%5D%2C%22unequipped%22%3A%5B%5D%7D"
+ },
+ {
+  "file": "builds/subclasses/void-voidwalker.md",
+  "name": "Soul Siphon Voidwalker — Double Nova",
+  "loadout": {
+   "name": "Soul Siphon Voidwalker — Double Nova",
+   "classType": 2,
+   "clearSpace": false,
+   "parameters": {},
+   "equipped": [
+    {
+     "hash": 2849050827,
+     "socketOverrides": {
+      "0": 2209081649,
+      "2": 1656118682,
+      "3": 2299867342,
+      "4": 1016030582,
+      "5": 2321824286,
+      "6": 2321824284,
+      "7": 2272984664,
+      "8": 2661180601,
+      "9": 2661180600,
+      "10": 2661180603,
+      "11": 2272984668
+     }
+    },
+    {
+     "hash": 1030017949
+    },
+    {
+     "hash": 2816212794
+    }
+   ],
+   "unequipped": []
+  },
+  "url": "https://app.destinyitemmanager.com/loadouts?loadout=%7B%22name%22%3A%22Soul%20Siphon%20Voidwalker%20%E2%80%94%20Double%20Nova%22%2C%22classType%22%3A2%2C%22clearSpace%22%3Afalse%2C%22parameters%22%3A%7B%7D%2C%22equipped%22%3A%5B%7B%22hash%22%3A2849050827%2C%22socketOverrides%22%3A%7B%220%22%3A2209081649%2C%222%22%3A1656118682%2C%223%22%3A2299867342%2C%224%22%3A1016030582%2C%225%22%3A2321824286%2C%226%22%3A2321824284%2C%227%22%3A2272984664%2C%228%22%3A2661180601%2C%229%22%3A2661180600%2C%2210%22%3A2661180603%2C%2211%22%3A2272984668%7D%7D%2C%7B%22hash%22%3A1030017949%7D%2C%7B%22hash%22%3A2816212794%7D%5D%2C%22unequipped%22%3A%5B%5D%7D"
+ },
+ {
+  "file": "builds/subclasses/stasis-shadebinder.md",
+  "name": "Permafrost Bleak Watcher — Osmiomancy",
+  "loadout": {
+   "name": "Permafrost Bleak Watcher — Osmiomancy",
+   "classType": 2,
+   "clearSpace": false,
+   "parameters": {},
+   "equipped": [
+    {
+     "hash": 3291545503,
+     "socketOverrides": {
+      "0": 3492047641,
+      "2": 3683904166,
+      "3": 2543177538,
+      "4": 1399219,
+      "5": 2642597904,
+      "6": 2651551055,
+      "7": 2483898430,
+      "8": 537774540,
+      "9": 3469412971,
+      "10": 3469412975
+     }
+    },
+    {
+     "hash": 2555349547
+    }
+   ],
+   "unequipped": []
+  },
+  "url": "https://app.destinyitemmanager.com/loadouts?loadout=%7B%22name%22%3A%22Permafrost%20Bleak%20Watcher%20%E2%80%94%20Osmiomancy%22%2C%22classType%22%3A2%2C%22clearSpace%22%3Afalse%2C%22parameters%22%3A%7B%7D%2C%22equipped%22%3A%5B%7B%22hash%22%3A3291545503%2C%22socketOverrides%22%3A%7B%220%22%3A3492047641%2C%222%22%3A3683904166%2C%223%22%3A2543177538%2C%224%22%3A1399219%2C%225%22%3A2642597904%2C%226%22%3A2651551055%2C%227%22%3A2483898430%2C%228%22%3A537774540%2C%229%22%3A3469412971%2C%2210%22%3A3469412975%7D%7D%2C%7B%22hash%22%3A2555349547%7D%5D%2C%22unequipped%22%3A%5B%5D%7D"
+ },
+ {
+  "file": "builds/subclasses/strand-broodweaver.md",
+  "name": "Threadling Nest Broodweaver — Necrotic",
+  "loadout": {
+   "name": "Threadling Nest Broodweaver — Necrotic",
+   "classType": 2,
+   "clearSpace": false,
+   "parameters": {},
+   "equipped": [
+    {
+     "hash": 4204413574,
+     "socketOverrides": {
+      "0": 383852320,
+      "2": 1885339915,
+      "3": 2307689415,
+      "4": 4228170798,
+      "5": 262821318,
+      "6": 262821317,
+      "7": 4208512211,
+      "8": 3192552691,
+      "9": 4208512222,
+      "10": 4208512219,
+      "11": 4208512220
+     }
+    },
+    {
+     "hash": 124786972
+    },
+    {
+     "hash": 4284533075
+    }
+   ],
+   "unequipped": []
+  },
+  "url": "https://app.destinyitemmanager.com/loadouts?loadout=%7B%22name%22%3A%22Threadling%20Nest%20Broodweaver%20%E2%80%94%20Necrotic%22%2C%22classType%22%3A2%2C%22clearSpace%22%3Afalse%2C%22parameters%22%3A%7B%7D%2C%22equipped%22%3A%5B%7B%22hash%22%3A4204413574%2C%22socketOverrides%22%3A%7B%220%22%3A383852320%2C%222%22%3A1885339915%2C%223%22%3A2307689415%2C%224%22%3A4228170798%2C%225%22%3A262821318%2C%226%22%3A262821317%2C%227%22%3A4208512211%2C%228%22%3A3192552691%2C%229%22%3A4208512222%2C%2210%22%3A4208512219%2C%2211%22%3A4208512220%7D%7D%2C%7B%22hash%22%3A124786972%7D%2C%7B%22hash%22%3A4284533075%7D%5D%2C%22unequipped%22%3A%5B%5D%7D"
+ },
+ {
+  "file": "builds/subclasses/prismatic.md",
+  "name": "Busted Buddies — Getaway Prismatic",
+  "loadout": {
+   "name": "Busted Buddies — Getaway Prismatic",
+   "classType": 2,
+   "clearSpace": false,
+   "parameters": {},
+   "equipped": [
+    {
+     "hash": 3893112950,
+     "socketOverrides": {
+      "0": 1444664838,
+      "2": 1869939001,
+      "3": 3644045871,
+      "4": 4241856103,
+      "7": 790664813,
+      "8": 790664814,
+      "9": 2626922124,
+      "10": 2626922114,
+      "11": 124726505,
+      "12": 124726504
+     }
+    },
+    {
+     "hash": 3070357340
+    }
+   ],
+   "unequipped": []
+  },
+  "url": "https://app.destinyitemmanager.com/loadouts?loadout=%7B%22name%22%3A%22Busted%20Buddies%20%E2%80%94%20Getaway%20Prismatic%22%2C%22classType%22%3A2%2C%22clearSpace%22%3Afalse%2C%22parameters%22%3A%7B%7D%2C%22equipped%22%3A%5B%7B%22hash%22%3A3893112950%2C%22socketOverrides%22%3A%7B%220%22%3A1444664838%2C%222%22%3A1869939001%2C%223%22%3A3644045871%2C%224%22%3A4241856103%2C%227%22%3A790664813%2C%228%22%3A790664814%2C%229%22%3A2626922124%2C%2210%22%3A2626922114%2C%2211%22%3A124726505%2C%2212%22%3A124726504%7D%7D%2C%7B%22hash%22%3A3070357340%7D%5D%2C%22unequipped%22%3A%5B%5D%7D"
+ },
+ {
+  "file": "builds/exotic-helpers/speakers-sight.md",
+  "name": "Speaker's Sight — Twin Healing Turrets",
+  "loadout": {
+   "name": "Speaker's Sight — Twin Healing Turrets",
+   "classType": 2,
+   "clearSpace": false,
+   "parameters": {},
+   "equipped": [
+    {
+     "hash": 3941205951,
+     "socketOverrides": {
+      "0": 2979486801,
+      "2": 2274196887,
+      "3": 1470370538,
+      "4": 1841016428,
+      "5": 83039193,
+      "6": 83039195,
+      "7": 362132292,
+      "8": 362132288,
+      "9": 362132294,
+      "10": 4180586737
+     }
+    },
+    {
+     "hash": 50291571
+    }
+   ],
+   "unequipped": []
+  },
+  "url": "https://app.destinyitemmanager.com/loadouts?loadout=%7B%22name%22%3A%22Speaker's%20Sight%20%E2%80%94%20Twin%20Healing%20Turrets%22%2C%22classType%22%3A2%2C%22clearSpace%22%3Afalse%2C%22parameters%22%3A%7B%7D%2C%22equipped%22%3A%5B%7B%22hash%22%3A3941205951%2C%22socketOverrides%22%3A%7B%220%22%3A2979486801%2C%222%22%3A2274196887%2C%223%22%3A1470370538%2C%224%22%3A1841016428%2C%225%22%3A83039193%2C%226%22%3A83039195%2C%227%22%3A362132292%2C%228%22%3A362132288%2C%229%22%3A362132294%2C%2210%22%3A4180586737%7D%7D%2C%7B%22hash%22%3A50291571%7D%5D%2C%22unequipped%22%3A%5B%5D%7D"
+ },
+ {
+  "file": "builds/exotic-helpers/boots-of-the-assembler.md",
+  "name": "Noble Sanctuary — Boots of the Assembler",
+  "loadout": {
+   "name": "Noble Sanctuary — Boots of the Assembler",
+   "classType": 2,
+   "clearSpace": false,
+   "parameters": {},
+   "equipped": [
+    {
+     "hash": 3941205951,
+     "socketOverrides": {
+      "0": 2979486803,
+      "2": 2274196887,
+      "3": 1470370538,
+      "4": 1841016428,
+      "5": 83039193,
+      "6": 83039194,
+      "7": 362132292,
+      "8": 362132288,
+      "9": 4180586737,
+      "10": 1051276351
+     }
+    },
+    {
+     "hash": 597039524
+    },
+    {
+     "hash": 3512014804
+    }
+   ],
+   "unequipped": []
+  },
+  "url": "https://app.destinyitemmanager.com/loadouts?loadout=%7B%22name%22%3A%22Noble%20Sanctuary%20%E2%80%94%20Boots%20of%20the%20Assembler%22%2C%22classType%22%3A2%2C%22clearSpace%22%3Afalse%2C%22parameters%22%3A%7B%7D%2C%22equipped%22%3A%5B%7B%22hash%22%3A3941205951%2C%22socketOverrides%22%3A%7B%220%22%3A2979486803%2C%222%22%3A2274196887%2C%223%22%3A1470370538%2C%224%22%3A1841016428%2C%225%22%3A83039193%2C%226%22%3A83039194%2C%227%22%3A362132292%2C%228%22%3A362132288%2C%229%22%3A4180586737%2C%2210%22%3A1051276351%7D%7D%2C%7B%22hash%22%3A597039524%7D%2C%7B%22hash%22%3A3512014804%7D%5D%2C%22unequipped%22%3A%5B%5D%7D"
+ },
+ {
+  "file": "builds/exotic-helpers/getaway-artist.md",
+  "name": "Getaway Twin Turrets — Prismatic",
+  "loadout": {
+   "name": "Getaway Twin Turrets — Prismatic",
+   "classType": 2,
+   "clearSpace": false,
+   "parameters": {},
+   "equipped": [
+    {
+     "hash": 3893112950,
+     "socketOverrides": {
+      "0": 1444664838,
+      "2": 1869939005,
+      "3": 3644045871,
+      "4": 4241856103,
+      "7": 790664813,
+      "8": 790664815,
+      "9": 2626922124,
+      "10": 124726504,
+      "11": 2626922120,
+      "12": 124726500
+     }
+    },
+    {
+     "hash": 3070357340
+    }
+   ],
+   "unequipped": []
+  },
+  "url": "https://app.destinyitemmanager.com/loadouts?loadout=%7B%22name%22%3A%22Getaway%20Twin%20Turrets%20%E2%80%94%20Prismatic%22%2C%22classType%22%3A2%2C%22clearSpace%22%3Afalse%2C%22parameters%22%3A%7B%7D%2C%22equipped%22%3A%5B%7B%22hash%22%3A3893112950%2C%22socketOverrides%22%3A%7B%220%22%3A1444664838%2C%222%22%3A1869939005%2C%223%22%3A3644045871%2C%224%22%3A4241856103%2C%227%22%3A790664813%2C%228%22%3A790664815%2C%229%22%3A2626922124%2C%2210%22%3A124726504%2C%2211%22%3A2626922120%2C%2212%22%3A124726500%7D%7D%2C%7B%22hash%22%3A3070357340%7D%5D%2C%22unequipped%22%3A%5B%5D%7D"
+ },
+ {
+  "file": "builds/exotic-helpers/mataiodoxia.md",
+  "name": "Stylostixis Suspend Engine — Mataiodoxia",
+  "loadout": {
+   "name": "Stylostixis Suspend Engine — Mataiodoxia",
+   "classType": 2,
+   "clearSpace": false,
+   "parameters": {},
+   "equipped": [
+    {
+     "hash": 4204413574,
+     "socketOverrides": {
+      "0": 383852320,
+      "2": 1885339915,
+      "3": 2307689415,
+      "4": 2809342386,
+      "5": 262821318,
+      "6": 262821319,
+      "7": 4208512222,
+      "8": 3192552690,
+      "9": 3192552691,
+      "10": 4208512219
+     }
+    },
+    {
+     "hash": 1003391927
+    },
+    {
+     "hash": 4068264807
+    }
+   ],
+   "unequipped": []
+  },
+  "url": "https://app.destinyitemmanager.com/loadouts?loadout=%7B%22name%22%3A%22Stylostixis%20Suspend%20Engine%20%E2%80%94%20Mataiodoxia%22%2C%22classType%22%3A2%2C%22clearSpace%22%3Afalse%2C%22parameters%22%3A%7B%7D%2C%22equipped%22%3A%5B%7B%22hash%22%3A4204413574%2C%22socketOverrides%22%3A%7B%220%22%3A383852320%2C%222%22%3A1885339915%2C%223%22%3A2307689415%2C%224%22%3A2809342386%2C%225%22%3A262821318%2C%226%22%3A262821319%2C%227%22%3A4208512222%2C%228%22%3A3192552690%2C%229%22%3A3192552691%2C%2210%22%3A4208512219%7D%7D%2C%7B%22hash%22%3A1003391927%7D%2C%7B%22hash%22%3A4068264807%7D%5D%2C%22unequipped%22%3A%5B%5D%7D"
+ },
+ {
+  "file": "builds/exotic-helpers/starfire-protocol.md",
+  "name": "Starfire Nuke — Fusion DPS",
+  "loadout": {
+   "name": "Starfire Nuke — Fusion DPS",
+   "classType": 2,
+   "clearSpace": false,
+   "parameters": {},
+   "equipped": [
+    {
+     "hash": 3941205951,
+     "socketOverrides": {
+      "0": 2979486802,
+      "2": 2274196887,
+      "3": 1470370538,
+      "4": 1013086087,
+      "5": 83039193,
+      "6": 83039194,
+      "7": 1051276349,
+      "8": 362132293,
+      "9": 362132288,
+      "10": 1051276351
+     }
+    },
+    {
+     "hash": 599049453
+    }
+   ],
+   "unequipped": []
+  },
+  "url": "https://app.destinyitemmanager.com/loadouts?loadout=%7B%22name%22%3A%22Starfire%20Nuke%20%E2%80%94%20Fusion%20DPS%22%2C%22classType%22%3A2%2C%22clearSpace%22%3Afalse%2C%22parameters%22%3A%7B%7D%2C%22equipped%22%3A%5B%7B%22hash%22%3A3941205951%2C%22socketOverrides%22%3A%7B%220%22%3A2979486802%2C%222%22%3A2274196887%2C%223%22%3A1470370538%2C%224%22%3A1013086087%2C%225%22%3A83039193%2C%226%22%3A83039194%2C%227%22%3A1051276349%2C%228%22%3A362132293%2C%229%22%3A362132288%2C%2210%22%3A1051276351%7D%7D%2C%7B%22hash%22%3A599049453%7D%5D%2C%22unequipped%22%3A%5B%5D%7D"
+ },
+ {
+  "file": "builds/exotic-helpers/nezarecs-sin.md",
+  "name": "Abyssal Extractors — Nezarec's Sin",
+  "loadout": {
+   "name": "Abyssal Extractors — Nezarec's Sin",
+   "classType": 2,
+   "clearSpace": false,
+   "parameters": {},
+   "equipped": [
+    {
+     "hash": 2849050827,
+     "socketOverrides": {
+      "0": 2209081649,
+      "2": 1656118682,
+      "3": 2299867342,
+      "4": 1016030582,
+      "5": 2321824286,
+      "6": 2321824287,
+      "7": 2272984668,
+      "8": 2272984666,
+      "9": 2661180603,
+      "10": 2272984665,
+      "11": 2661180600
+     }
+    },
+    {
+     "hash": 925466716
+    }
+   ],
+   "unequipped": []
+  },
+  "url": "https://app.destinyitemmanager.com/loadouts?loadout=%7B%22name%22%3A%22Abyssal%20Extractors%20%E2%80%94%20Nezarec's%20Sin%22%2C%22classType%22%3A2%2C%22clearSpace%22%3Afalse%2C%22parameters%22%3A%7B%7D%2C%22equipped%22%3A%5B%7B%22hash%22%3A2849050827%2C%22socketOverrides%22%3A%7B%220%22%3A2209081649%2C%222%22%3A1656118682%2C%223%22%3A2299867342%2C%224%22%3A1016030582%2C%225%22%3A2321824286%2C%226%22%3A2321824287%2C%227%22%3A2272984668%2C%228%22%3A2272984666%2C%229%22%3A2661180603%2C%2210%22%3A2272984665%2C%2211%22%3A2661180600%7D%7D%2C%7B%22hash%22%3A925466716%7D%5D%2C%22unequipped%22%3A%5B%5D%7D"
+ },
+ {
+  "file": "builds/exotic-helpers/stasis-turret-rime-coat-osmiomancy.md",
+  "name": "Permafrost Sentinel — Rime-Coat",
+  "loadout": {
+   "name": "Permafrost Sentinel — Rime-Coat",
+   "classType": 2,
+   "clearSpace": false,
+   "parameters": {},
+   "equipped": [
+    {
+     "hash": 3291545503,
+     "socketOverrides": {
+      "0": 3492047641,
+      "2": 3683904166,
+      "3": 2543177538,
+      "4": 1399219,
+      "5": 2642597904,
+      "6": 2651551055,
+      "7": 3469412975,
+      "8": 2483898428,
+      "9": 537774540,
+      "10": 3469412971
+     }
+    },
+    {
+     "hash": 888791258
+    }
+   ],
+   "unequipped": []
+  },
+  "url": "https://app.destinyitemmanager.com/loadouts?loadout=%7B%22name%22%3A%22Permafrost%20Sentinel%20%E2%80%94%20Rime-Coat%22%2C%22classType%22%3A2%2C%22clearSpace%22%3Afalse%2C%22parameters%22%3A%7B%7D%2C%22equipped%22%3A%5B%7B%22hash%22%3A3291545503%2C%22socketOverrides%22%3A%7B%220%22%3A3492047641%2C%222%22%3A3683904166%2C%223%22%3A2543177538%2C%224%22%3A1399219%2C%225%22%3A2642597904%2C%226%22%3A2651551055%2C%227%22%3A3469412975%2C%228%22%3A2483898428%2C%229%22%3A537774540%2C%2210%22%3A3469412971%7D%7D%2C%7B%22hash%22%3A888791258%7D%5D%2C%22unequipped%22%3A%5B%5D%7D"
+ },
+ {
+  "file": "builds/exotic-helpers/prismatic-exotic-class-item.md",
+  "name": "Apotheosis Eater — Solipsism Prismatic",
+  "loadout": {
+   "name": "Apotheosis Eater — Solipsism Prismatic",
+   "classType": 2,
+   "clearSpace": false,
+   "parameters": {},
+   "equipped": [
+    {
+     "hash": 3893112950,
+     "socketOverrides": {
+      "0": 1444664838,
+      "2": 1869939004,
+      "3": 3644045871,
+      "4": 1048847436,
+      "7": 790664814,
+      "8": 790664815,
+      "9": 124726498,
+      "10": 2626922126,
+      "11": 2626922124,
+      "12": 2626922120
+     }
+    },
+    {
+     "hash": 2273643087
+    }
+   ],
+   "unequipped": []
+  },
+  "url": "https://app.destinyitemmanager.com/loadouts?loadout=%7B%22name%22%3A%22Apotheosis%20Eater%20%E2%80%94%20Solipsism%20Prismatic%22%2C%22classType%22%3A2%2C%22clearSpace%22%3Afalse%2C%22parameters%22%3A%7B%7D%2C%22equipped%22%3A%5B%7B%22hash%22%3A3893112950%2C%22socketOverrides%22%3A%7B%220%22%3A1444664838%2C%222%22%3A1869939004%2C%223%22%3A3644045871%2C%224%22%3A1048847436%2C%227%22%3A790664814%2C%228%22%3A790664815%2C%229%22%3A124726498%2C%2210%22%3A2626922126%2C%2211%22%3A2626922124%2C%2212%22%3A2626922120%7D%7D%2C%7B%22hash%22%3A2273643087%7D%5D%2C%22unequipped%22%3A%5B%5D%7D"
+ },
+ {
+  "file": "builds/exotic-helpers/skull-double-nova-bomb.md",
+  "name": "Triple-Detonation Ahamkara",
+  "loadout": {
+   "name": "Triple-Detonation Ahamkara",
+   "classType": 2,
+   "clearSpace": false,
+   "parameters": {},
+   "equipped": [
+    {
+     "hash": 2849050827,
+     "socketOverrides": {
+      "0": 2209081648,
+      "2": 1656118682,
+      "3": 2299867342,
+      "4": 1016030582,
+      "5": 2321824284,
+      "6": 2321824286,
+      "7": 2661180600,
+      "8": 2272984668,
+      "9": 2272984671,
+      "10": 2661180601,
+      "11": 2272984669
+     }
+    },
+    {
+     "hash": 1030017949
+    },
+    {
+     "hash": 2816212794
+    }
+   ],
+   "unequipped": []
+  },
+  "url": "https://app.destinyitemmanager.com/loadouts?loadout=%7B%22name%22%3A%22Triple-Detonation%20Ahamkara%22%2C%22classType%22%3A2%2C%22clearSpace%22%3Afalse%2C%22parameters%22%3A%7B%7D%2C%22equipped%22%3A%5B%7B%22hash%22%3A2849050827%2C%22socketOverrides%22%3A%7B%220%22%3A2209081648%2C%222%22%3A1656118682%2C%223%22%3A2299867342%2C%224%22%3A1016030582%2C%225%22%3A2321824284%2C%226%22%3A2321824286%2C%227%22%3A2661180600%2C%228%22%3A2272984668%2C%229%22%3A2272984671%2C%2210%22%3A2661180601%2C%2211%22%3A2272984669%7D%7D%2C%7B%22hash%22%3A1030017949%7D%2C%7B%22hash%22%3A2816212794%7D%5D%2C%22unequipped%22%3A%5B%5D%7D"
+ },
+ {
+  "file": "builds/exotic-helpers/well-team-dps-lunafaction.md",
+  "name": "The Last Well — Lunafaction",
+  "loadout": {
+   "name": "The Last Well — Lunafaction",
+   "classType": 2,
+   "clearSpace": false,
+   "parameters": {},
+   "equipped": [
+    {
+     "hash": 3941205951,
+     "socketOverrides": {
+      "0": 2979486802,
+      "2": 2274196887,
+      "3": 1470370538,
+      "4": 1841016428,
+      "5": 83039193,
+      "6": 83039195,
+      "7": 362132292,
+      "8": 362132288,
+      "9": 362132294,
+      "10": 362132300
+     }
+    },
+    {
+     "hash": 418363297
+    }
+   ],
+   "unequipped": []
+  },
+  "url": "https://app.destinyitemmanager.com/loadouts?loadout=%7B%22name%22%3A%22The%20Last%20Well%20%E2%80%94%20Lunafaction%22%2C%22classType%22%3A2%2C%22clearSpace%22%3Afalse%2C%22parameters%22%3A%7B%7D%2C%22equipped%22%3A%5B%7B%22hash%22%3A3941205951%2C%22socketOverrides%22%3A%7B%220%22%3A2979486802%2C%222%22%3A2274196887%2C%223%22%3A1470370538%2C%224%22%3A1841016428%2C%225%22%3A83039193%2C%226%22%3A83039195%2C%227%22%3A362132292%2C%228%22%3A362132288%2C%229%22%3A362132294%2C%2210%22%3A362132300%7D%7D%2C%7B%22hash%22%3A418363297%7D%5D%2C%22unequipped%22%3A%5B%5D%7D"
+ },
+ {
+  "file": "builds/exotic-helpers/threadling-weavers-call-boots.md",
+  "name": "Threadweaver's Loom — Swarm",
+  "loadout": {
+   "name": "Threadweaver's Loom — Swarm",
+   "classType": 2,
+   "clearSpace": false,
+   "parameters": {},
+   "equipped": [
+    {
+     "hash": 4204413574,
+     "socketOverrides": {
+      "0": 383852320,
+      "2": 1885339915,
+      "3": 2307689415,
+      "4": 4228170798,
+      "5": 262821317,
+      "6": 262821318,
+      "7": 4208512220,
+      "8": 4208512222,
+      "9": 3192552691,
+      "10": 4208512211,
+      "11": 3192552690
+     }
+    },
+    {
+     "hash": 597039524
+    },
+    {
+     "hash": 4284533075
+    }
+   ],
+   "unequipped": []
+  },
+  "url": "https://app.destinyitemmanager.com/loadouts?loadout=%7B%22name%22%3A%22Threadweaver's%20Loom%20%E2%80%94%20Swarm%22%2C%22classType%22%3A2%2C%22clearSpace%22%3Afalse%2C%22parameters%22%3A%7B%7D%2C%22equipped%22%3A%5B%7B%22hash%22%3A4204413574%2C%22socketOverrides%22%3A%7B%220%22%3A383852320%2C%222%22%3A1885339915%2C%223%22%3A2307689415%2C%224%22%3A4228170798%2C%225%22%3A262821317%2C%226%22%3A262821318%2C%227%22%3A4208512220%2C%228%22%3A4208512222%2C%229%22%3A3192552691%2C%2210%22%3A4208512211%2C%2211%22%3A3192552690%7D%7D%2C%7B%22hash%22%3A597039524%7D%2C%7B%22hash%22%3A4284533075%7D%5D%2C%22unequipped%22%3A%5B%5D%7D"
+ },
+ {
+  "file": "builds/exotic-helpers/hellion-eunoia-phoenix-dive.md",
+  "name": "Consul's Artillery — Hellion Eunoia",
+  "loadout": {
+   "name": "Consul's Artillery — Hellion Eunoia",
+   "classType": 2,
+   "clearSpace": false,
+   "parameters": {},
+   "equipped": [
+    {
+     "hash": 3941205951,
+     "socketOverrides": {
+      "0": 2979486801,
+      "2": 2274196884,
+      "3": 1470370538,
+      "4": 1013086087,
+      "5": 83039192,
+      "6": 83039193,
+      "7": 1051276349,
+      "8": 362132291,
+      "9": 362132293,
+      "10": 1051276348
+     }
+    },
+    {
+     "hash": 3481695565
+    }
+   ],
+   "unequipped": []
+  },
+  "url": "https://app.destinyitemmanager.com/loadouts?loadout=%7B%22name%22%3A%22Consul's%20Artillery%20%E2%80%94%20Hellion%20Eunoia%22%2C%22classType%22%3A2%2C%22clearSpace%22%3Afalse%2C%22parameters%22%3A%7B%7D%2C%22equipped%22%3A%5B%7B%22hash%22%3A3941205951%2C%22socketOverrides%22%3A%7B%220%22%3A2979486801%2C%222%22%3A2274196884%2C%223%22%3A1470370538%2C%224%22%3A1013086087%2C%225%22%3A83039192%2C%226%22%3A83039193%2C%227%22%3A1051276349%2C%228%22%3A362132291%2C%229%22%3A362132293%2C%2210%22%3A1051276348%7D%7D%2C%7B%22hash%22%3A3481695565%7D%5D%2C%22unequipped%22%3A%5B%5D%7D"
+ },
+ {
+  "file": "builds/exotic-helpers/necrotic-osteo-striga.md",
+  "name": "Plaguebearer's Weave — Necrotic+Osteo",
+  "loadout": {
+   "name": "Plaguebearer's Weave — Necrotic+Osteo",
+   "classType": 2,
+   "clearSpace": false,
+   "parameters": {},
+   "equipped": [
+    {
+     "hash": 4204413574,
+     "socketOverrides": {
+      "0": 383852320,
+      "2": 1885339915,
+      "3": 2307689415,
+      "4": 2809342386,
+      "5": 262821318,
+      "6": 262821319,
+      "7": 3192552690,
+      "8": 3192552691,
+      "9": 4208512218,
+      "10": 3192552688
+     }
+    },
+    {
+     "hash": 124786972
+    },
+    {
+     "hash": 46524085
+    }
+   ],
+   "unequipped": []
+  },
+  "url": "https://app.destinyitemmanager.com/loadouts?loadout=%7B%22name%22%3A%22Plaguebearer's%20Weave%20%E2%80%94%20Necrotic%2BOsteo%22%2C%22classType%22%3A2%2C%22clearSpace%22%3Afalse%2C%22parameters%22%3A%7B%7D%2C%22equipped%22%3A%5B%7B%22hash%22%3A4204413574%2C%22socketOverrides%22%3A%7B%220%22%3A383852320%2C%222%22%3A1885339915%2C%223%22%3A2307689415%2C%224%22%3A2809342386%2C%225%22%3A262821318%2C%226%22%3A262821319%2C%227%22%3A3192552690%2C%228%22%3A3192552691%2C%229%22%3A4208512218%2C%2210%22%3A3192552688%7D%7D%2C%7B%22hash%22%3A124786972%7D%2C%7B%22hash%22%3A46524085%7D%5D%2C%22unequipped%22%3A%5B%5D%7D"
+ }
+]
