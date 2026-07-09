@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Destiny 2 — Armor Set Bonuses</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  :root{
+    --bg:#0f172a; --panel:#ffffff; --page:#f1f5f9; --ink:#0f172a; --muted:#64748b;
+    --line:#e2e8f0; --accent:#6366f1; --accent-ink:#4f46e5;
+    --pvp:#e11d48; --pvp-tint:rgba(225,29,72,.06); --pvp-tint-hover:rgba(225,29,72,.11);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--page); color:var(--ink);
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    font-size:14px; line-height:1.5; -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    background:radial-gradient(1200px 400px at 15% -20%,#312e81 0%,transparent 60%),
+               radial-gradient(900px 400px at 90% -40%,#0e7490 0%,transparent 55%),
+               linear-gradient(180deg,#0f172a,#111827);
+    color:#e5e7eb; padding:34px 24px 26px; border-bottom:1px solid #1f2937;
+  }
+  .wrap{max-width:1400px; margin:0 auto}
+  header h1{margin:0; font-size:26px; font-weight:800; letter-spacing:-.02em; color:#fff}
+  header p{margin:6px 0 0; color:#94a3b8; font-size:13.5px}
+  header .badge-note{color:#c7d2fe}
+
+  .callout{margin-top:16px; display:flex; gap:11px; align-items:flex-start;
+    background:rgba(56,189,248,.10); border:1px solid rgba(56,189,248,.35);
+    border-radius:12px; padding:12px 15px; max-width:900px}
+  .callout svg{flex:none; width:19px; height:19px; color:#38bdf8; margin-top:1px}
+  .callout .ctext{color:#e2e8f0; font-size:13.5px; line-height:1.5}
+  .callout .ctext b{color:#fff}
+
+  /* ---------- Toolbar ---------- */
+  .toolbar{
+    position:sticky; top:0; z-index:30; background:rgba(241,245,249,.86);
+    backdrop-filter:saturate(1.4) blur(8px); border-bottom:1px solid var(--line);
+    padding:14px 24px;
+  }
+  .toolbar .inner{max-width:1400px; margin:0 auto; display:flex; flex-wrap:wrap; gap:12px; align-items:center}
+  .search{position:relative; flex:1 1 320px; min-width:240px}
+  .search svg{position:absolute; left:12px; top:50%; transform:translateY(-50%); width:16px; height:16px; color:var(--muted)}
+  .search input{
+    width:100%; padding:10px 12px 10px 36px; border:1px solid var(--line); border-radius:10px;
+    background:#fff; font-size:14px; color:var(--ink); box-shadow:0 1px 2px rgba(15,23,42,.04);
+  }
+  .search input:focus{outline:none; border-color:var(--accent); box-shadow:0 0 0 3px rgba(99,102,241,.18)}
+
+  .tiers{display:flex; flex-wrap:wrap; gap:6px; align-items:center}
+  .tier-pill{
+    cursor:pointer; user-select:none; border:1px solid var(--line); background:#fff;
+    padding:6px 10px; border-radius:999px; font-weight:700; font-size:12.5px; color:#334155;
+    display:inline-flex; align-items:center; gap:6px; transition:.12s;
+  }
+  .tier-pill:hover{border-color:#cbd5e1}
+  .tier-pill .dot{width:10px; height:10px; border-radius:3px; box-shadow:0 0 0 1px rgba(0,0,0,.06)}
+  .tier-pill.active{font-weight:800}
+  .toggle{
+    cursor:pointer; user-select:none; display:inline-flex; align-items:center; gap:8px;
+    padding:8px 12px; border:1px solid var(--line); border-radius:10px; background:#fff; font-weight:600; font-size:13px; color:#334155;
+  }
+  .toggle input{accent-color:var(--pvp); width:15px; height:15px}
+  .toggle.on{border-color:var(--pvp); color:var(--pvp); background:var(--pvp-tint)}
+  .btn-clear{
+    cursor:pointer; padding:8px 12px; border:1px solid var(--line); border-radius:10px;
+    background:#fff; font-weight:600; font-size:13px; color:#475569;
+  }
+  .btn-clear:hover{background:#f8fafc}
+  .count{margin-left:auto; color:var(--muted); font-size:13px; white-space:nowrap}
+  .count b{color:var(--ink)}
+
+  /* ---------- Table ---------- */
+  .tablewrap{max-width:1400px; margin:24px auto; padding:0 24px}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:16px; overflow:hidden;
+    box-shadow:0 1px 3px rgba(15,23,42,.06),0 10px 30px -18px rgba(15,23,42,.25)}
+  .scroll{overflow-x:auto}
+  table{width:100%; border-collapse:separate; border-spacing:0; min-width:1040px}
+  thead th{
+    position:sticky; top:0; z-index:10; background:#f8fafc; text-align:left;
+    font-size:11.5px; text-transform:uppercase; letter-spacing:.06em; color:#475569; font-weight:700;
+    padding:12px 16px; border-bottom:1px solid var(--line); white-space:nowrap;
+  }
+  th.sortable{cursor:pointer; user-select:none}
+  th.sortable:hover{color:var(--accent-ink)}
+  th .arrow{opacity:.35; margin-left:5px; font-size:10px}
+  th.sorted .arrow{opacity:1; color:var(--accent-ink)}
+  tbody td{padding:14px 16px; border-bottom:1px solid var(--line); vertical-align:top}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr.main{transition:background .1s; cursor:pointer}
+  tbody tr.main:hover{background:#f8fafc}
+  tbody tr.main.pvp{background:var(--pvp-tint); box-shadow:inset 3px 0 0 var(--pvp)}
+  tbody tr.main.pvp:hover{background:var(--pvp-tint-hover)}
+  tbody tr.main.open{background:#eef2ff}
+  tbody tr.main.open.pvp{background:var(--pvp-tint-hover)}
+
+  .setcell{display:flex; gap:9px; align-items:flex-start}
+  .chev{flex:none; width:18px; height:18px; margin-top:1px; color:#94a3b8; transition:transform .18s}
+  tr.main.open .chev{transform:rotate(90deg); color:var(--accent-ink)}
+  .setname{font-weight:700; font-size:15px; letter-spacing:-.01em}
+  .src{color:#334155; font-weight:600}
+  .type-chips{display:flex; flex-wrap:wrap; gap:5px}
+  .tchip{display:inline-flex; align-items:center; font-size:11.5px; font-weight:700; line-height:1;
+    padding:5px 9px; border-radius:999px; border:1px solid transparent; white-space:nowrap}
+  .pvp-tag{display:inline-block; margin-top:8px; font-size:10.5px; font-weight:800; letter-spacing:.05em;
+    color:var(--pvp); border:1px solid var(--pvp); border-radius:6px; padding:2px 6px}
+
+  .bonus{max-width:520px}
+  .bonus .head{display:flex; align-items:center; gap:8px; margin-bottom:4px}
+  .bonus .bname{font-weight:700; color:#111827}
+  .bonus .desc{color:#334155; display:-webkit-box; -webkit-line-clamp:2; line-clamp:2; -webkit-box-orient:vertical; overflow:hidden}
+  .bonus-ic{flex:none; width:26px; height:26px; border-radius:6px; background:#0f172a; box-shadow:0 0 0 1px rgba(0,0,0,.08); object-fit:contain}
+  .empty{color:#cbd5e1}
+
+  /* Expanded detail row */
+  tr.detailrow > td{padding:0; border-bottom:1px solid var(--line); background:#fbfcfe}
+  tr.detailrow.pvp > td{background:var(--pvp-tint)}
+  .detail{display:grid; grid-template-columns:1fr 1fr; gap:18px; padding:20px 22px 22px}
+  .detail .dcol{background:#fff; border:1px solid var(--line); border-radius:12px; padding:16px}
+  .dhead{display:flex; align-items:center; gap:8px; margin-bottom:2px}
+  .dpiece{font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.06em; color:var(--muted)}
+  .dname{font-weight:700; font-size:15px; color:#111827; margin:4px 0 8px; display:flex; align-items:center; gap:9px}
+  .detail-ic{flex:none; width:34px; height:34px; border-radius:7px; background:#0f172a; box-shadow:0 0 0 1px rgba(0,0,0,.08); object-fit:contain}
+  .ddesc{color:#334155; margin-bottom:12px}
+  .dnlabel{font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.05em; color:var(--accent-ink); margin-bottom:3px}
+  .dnum{color:#334155; font-size:13px; line-height:1.5}
+  .dnum.none{color:#94a3b8; font-style:italic}
+  .dmeta{grid-column:1/-1; display:flex; flex-wrap:wrap; gap:18px; align-items:center; padding-top:2px; color:#334155; font-size:13px}
+  .dmeta .lbl{font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); margin-right:6px}
+  @media (max-width:720px){ .detail{grid-template-columns:1fr} }
+
+  /* Tier badge */
+  .badge{
+    flex:none; min-width:34px; height:22px; padding:0 8px; border-radius:6px; color:#fff;
+    font-weight:800; font-size:12px; letter-spacing:.02em; display:inline-flex; align-items:center; justify-content:center;
+    box-shadow:0 1px 1px rgba(0,0,0,.12);
+  }
+  .badge.pvp{background:#fff!important; color:var(--pvp)!important; border:1.5px solid var(--pvp); box-shadow:none}
+
+  .noresults{padding:56px 20px; text-align:center; color:var(--muted); font-size:15px}
+  .legend{max-width:1400px; margin:0 auto; padding:14px 24px 0; display:flex; flex-wrap:wrap; gap:14px; align-items:center; color:var(--muted); font-size:12.5px}
+  .legend .item{display:inline-flex; align-items:center; gap:6px}
+  .legend .sw{width:12px; height:12px; border-radius:3px}
+  footer{border-top:1px solid var(--line); background:#fff; margin-top:20px}
+  footer .fnotes{max-width:1400px; margin:0 auto; padding:22px 24px 40px; list-style:none;
+    display:grid; gap:10px; color:var(--muted); font-size:12.5px; line-height:1.55}
+  footer .fnotes li{padding-left:16px; position:relative}
+  footer .fnotes li::before{content:"›"; position:absolute; left:0; color:#cbd5e1; font-weight:700}
+  footer .fnotes li b{color:#334155}
+  footer .fnotes a{color:var(--accent-ink); text-decoration:none; border-bottom:1px solid rgba(79,70,229,.35)}
+  footer .fnotes a:hover{border-bottom-color:var(--accent-ink)}
+  footer .fnotes a b{color:inherit}
+
+  @media (max-width:640px){
+    header{padding:24px 16px 20px} header h1{font-size:21px}
+    .toolbar{padding:12px 14px} .tablewrap{padding:0 12px}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Destiny 2 — Armor Set Bonuses</h1>
+    <p>Two- and four-piece armor set perks with community tier ratings.</p>
+    <div class="callout">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      <div class="ctext"><b>Destination armor:</b> FOR DESTINATION ARMOR, WHEN DISTORTIONS ARE NOT ACTIVE, COMPLETE EXPERT/MASTER LOST SECTORS FOR DESTINATION TIERED LOOT.</div>
+    </div>
+  </div>
+</header>
+
+<div class="legend" id="legend"></div>
+
+<div class="toolbar">
+  <div class="inner">
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="q" type="search" placeholder="Search set, bonus, effect…" autocomplete="off">
+    </div>
+    <div class="tiers" id="tiers"></div>
+    <button class="btn-clear" id="clear">Reset</button>
+    <div class="count" id="count"></div>
+  </div>
+</div>
+
+<div class="tablewrap">
+  <div class="card">
+    <div class="scroll">
+      <table>
+        <thead>
+          <tr>
+            <th class="sortable" data-key="name">Set <span class="arrow">↕</span></th>
+            <th class="sortable" data-key="two">2-Piece Bonus <span class="arrow">↕</span></th>
+            <th class="sortable" data-key="four">4-Piece Bonus <span class="arrow">↕</span></th>
+            <th class="sortable" data-key="source">Source <span class="arrow">↕</span></th>
+            <th class="sortable" data-key="sourceType">Type <span class="arrow">↕</span></th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <div class="noresults" id="noresults" style="display:none">No sets match your filters.</div>
+  </div>
+</div>
+
+<footer>
+  <ul class="fnotes">
+    <li>Lost Sectors*: While at MAXIMUM exotic engrams filled, legendary engrams will drop instead of normal destination drops. These engrams have a chance at dropping from the OLD ARMOR loot pool.</li>
+    <li><b>Ratings:</b> ALL ARMOR SET BONUS RATINGS ARE SUBJECTIVE AND SOME NEW SETS ARE UNTESTED</li>
+    <li>All In-Depth numbers are credited to Destiny Data Compendium, support them here --&gt; — <a href="https://docs.google.com/spreadsheets/d/1WaxvbLx7UoSZaBqdFr1u32F2uWVLo-CJunJB4nlGUE4/htmlview#gid=1038486120" target="_blank" rel="noopener"><b>Destiny Data Compendium</b></a>.</li>
+    <li><b>Spreadsheet credit:</b> LowCo + Azra.</li>
+  </ul>
+</footer>
+
+<script>
+const SETS = [{"name":"AION Adapter","two":{"name":"Force Absorption","desc":"Final blows with any Rocket or Grenade Launcher temporarily decrease incoming area-of-effect damage.","num":"After a Micromissile, Rocket Launcher, or Grenade Launcher Kill: 20% AOE Damage Resist and 60% self-explosive Damage Resist for 15 Seconds","rating":"B","icon":"https://www.bungie.net/common/destiny2_content/icons/93c69df9a8c648602b10844524e8a0e6.png"},"four":{"name":"Reactive Shock","desc":"When Force Absorption is active, taking melee damage causes you to emit a disorienting burst once.","num":"This disorienting burst can only be triggered ONCE per Reactive Shock activation","rating":"C","icon":"https://www.bungie.net/common/destiny2_content/icons/96a637543fc3a60cf55d6b333ad87661.png"},"source":"Kepler","sourceType":"Destination"},{"name":"AION Renewal","two":{"name":"Force Converter","desc":"After a final blow with any Rocket or Grenade Launcher, sprint for a short time to gain Speed Booster.","num":"After a Micromissile, Rocket Launcher, or Grenade Launcher Kill: Grants force converter, granting speed boost","rating":"E","icon":"https://www.bungie.net/common/destiny2_content/icons/005db44d00a46515888db51ffd60f1bd.png"},"four":{"name":"Reactive Booster","desc":"Once per activation of Force Converter, sprinting while at critical health, being suspended, or being slowed by a Stasis effect will immediately grant Speed Booster for a short duration.","num":"This benefit can only trigger ONCE per Force Converter Activation","rating":"E","icon":"https://www.bungie.net/common/destiny2_content/icons/609405930d800a057c5e6eef3edac14e.png"},"source":"Kepler","sourceType":"Destination"},{"name":"Apostate's Blade","two":{"name":"Regenerative Threshold","desc":"Performing a finisher stores power. The next time your shields are broken, consume stored power to immediately heal and start health regeneration.","num":"Grants Regenerative Threshold on Finisher. When reaching Critical Health, consumes Regenerative Threshold and grants 20 HP and begins Health Regeneration.","rating":"B","icon":"https://www.bungie.net/common/destiny2_content/icons/37ff5b490115feacf7606fa7c7d62105.png"},"four":{"name":"Melee Conduction","desc":"While you have Radiant, Restoration, or Cure, your melee hits release a burst that will scorch the target.","num":"While Radiant, Resoration, or Cure are active: The tiggered Solar Blast deals 28 Damage and inflicts 30 (+10 ashes) scorch within 7 meters","rating":"C","icon":"https://www.bungie.net/common/destiny2_content/icons/a4ce3890548fa343ab97556f6ef1bac7.png"},"source":"Pit of Heresy","sourceType":"Dungeon"},{"name":"Atheon's Memory","two":{"name":"Radiolaria Breach","desc":"After picking up an Orb of Power, the next time your shields are broken, gain a bonus to Health stat for a short duration and release a burst of radiolaria around you.","num":"Damage is very minimal. Play for the 4 piece bonus","rating":"D","icon":"https://www.bungie.net/common/destiny2_content/icons/0a0c002d2eb7c7687fe93c02143d9c23.png"},"four":{"name":"Collective Power","desc":"While you have a subclass buff, dealing sustained damage creates an Orb of Power.","num":"Orb Appears at feet. Great for damage self-sustain via orbs","rating":"A","icon":"https://www.bungie.net/common/destiny2_content/icons/19fd2268026b9e381de699a3dc941741.png"},"source":"Vault of Glass","sourceType":"Raid"},{"name":"Bushido","two":{"name":"Iaido","desc":"Final blows with freshly drawn or reloaded weapons heal you.","num":"Kills Restore 35 HP. There is a 3 second Cooldown between perk activation.","rating":"B+","icon":"https://www.bungie.net/common/destiny2_content/icons/40abb2a18a499cc24222f052fca2a694.png"},"four":{"name":"Unfaltering Focus","desc":"Bow, Shotgun, or Sword final blows temporarily reduce incoming damage. Damaging targets with those weapons extends the effect.","num":"Resist x1 (10%) for 7 seconds. Additional damage extends buff by +2 seconds with maximum of 9 seconds.","rating":"C","icon":"https://www.bungie.net/common/destiny2_content/icons/533277959c64b90c06bdea0a6dbaa723.png"},"source":"Vanguard Engrams + Postmaster","sourceType":"Vendor (Zavala) + Lost Sectors*"},{"name":"Circuit","two":{"name":"Revving Up","desc":"Fast movement builds up a charge that gradually increases your health regeneration speed. Once you are Fully Revved, sprinting grants Speed Booster.","num":"Stacks accumulate at 1 per 5 seconds (45 seconds total) up to 10x stacks (+45% HP/s). Each stack grants increased Critical Health Regeneration Speed, NOT Shields. When slow, stacks deplete at 4x stacks/second","rating":"C","icon":"https://www.bungie.net/common/destiny2_content/icons/2bd8232d3bda3c410729c244956b2934.png"},"four":{"name":"Dielectric Drift","desc":"Sliding while Speed Booster is active jolts combatants in front of you.","num":"No internal cooldown?","rating":"B+","icon":"https://www.bungie.net/common/destiny2_content/icons/014d2db087e06c17703e3f48f1135e5d.png"},"source":"Sparrow Racing League","sourceType":"Portal"},{"name":"CODA","two":{"name":"Between Poles","desc":"Final blows with Light weapons grants stacks of Light Polarity, which grants Grenade stat. Final blows with Darkness or Kinetic weapons grants stacks of Dark Polarity, which grants stacks of Melee stat.","num":"","rating":"C","icon":"https://www.bungie.net/common/destiny2_content/icons/a0241a2cdaf39e14af7605dd460756d0.png"},"four":{"name":"So Very Thin","desc":"Final blows with Light weapons grants additional grenade energy. Final blows with Dark or Kinetic weapons grants additional melee energy. Rapid final blows that alternate between Light and Darkness grant a short period of damage resistance.","num":"In addition to the stats provided by 2-piece, chunk-ability gains AND 40% DR for 5 seconds as long as you play the rotating elements mini-game is amazing","rating":"S","icon":"https://www.bungie.net/common/destiny2_content/icons/e9dc45fc2e1f56748d5ddb414ebdf99d.png"},"source":"Prophecy","sourceType":"Dungeon"},{"name":"Collective Psyche","two":{"name":"Accretion","desc":"Picking up an ammo brick gives you a stacking bonus to weapon swap and stow speeds until you die.","num":"Stacks up to 20x. Persist through death. Special grants 1 stack, Heavy 3 stacks. Bonus to ready/stow speeds at maximum is .8x Ready/Stow Animation duration at 20 stacks.","rating":"E","icon":"https://www.bungie.net/common/destiny2_content/icons/e8dc7995d41ec6eb0e68e6b811643a3b.png"},"four":{"name":"Doppler Effect","desc":"Suspend, unravel, and sever effects applied to targets, and radiant and restoration effects applied to you have increased duration.","num":"Duration increase is 50% longer with Ember of Solace or Thread of Continuity boosting benefit to 70%","rating":"C","icon":"https://www.bungie.net/common/destiny2_content/icons/a96cbdea0b06d28d2780e100ac0ae51f.png"},"source":"The Desert Perpetual","sourceType":"Raid"},{"name":"Crota's Memory","two":{"name":"Cursed Fist","desc":"Melee final blows trigger a Cursed Thrall explosion.","num":"Radius of explosion is 4.5 meters. No? internal cooldown. Explosion is ARC damage.","rating":"B+","icon":"https://www.bungie.net/common/destiny2_content/icons/161a3720af72721392e459e6a66f087d.png"},"four":{"name":"Power of the Son","desc":"Being in combat for a duration grants progressively more flinch resistance and damage resistance versus combatants.","num":"Similar to Frenzy requirements for combat (Deal/recieve damage every 7 seconds). After 12 Seconds, gain 15% Damage Resist + Flinch Resist. After 24 Seconds, gain 25% Damage Resist + Flinch Resist.","rating":"A","icon":"https://www.bungie.net/common/destiny2_content/icons/63000cbeef61981c3efe32992739789b.png"},"source":"Crota's End","sourceType":"Raid"},{"name":"Cruel Electrum","two":{"name":"Primary Survivor","desc":"When an ally is defeated, Primary ammo weapons gain increased handling, reload speed, target acquisition, and reduced flinch. Bonus increases when multiple allies are dead at the same time or when you are running solo.","num":"","rating":"PVP","icon":"https://www.bungie.net/common/destiny2_content/icons/c1f98cc31a51f865ca062a684442964a.png"},"four":{"name":"Primary Phantom","desc":"Final blows with Primary ammo weapons remove you from radar for a short time. Drawing a weapon that does not use Primary ammo will immediately end this effect.","num":"","rating":"PVP","icon":"https://www.bungie.net/common/destiny2_content/icons/72b47646330904d1a46cf54a779be28a.png"},"source":"Trials of Osiris + Trials Engrams","sourceType":"Portal + Vendor (Saint-14)"},{"name":"Crystocrene","two":{"name":"Resupply","desc":"After being out of combat for a moderate duration, your next final blow grants additional ammo progress and creates an Orb of Power.","num":"Triggers EVERY 12 seconds no matter what; seems like a bug but likely will not get patched. free ammo progress + orbs is very good and benefits increase the less you are in combat.","rating":"A","icon":"https://www.bungie.net/common/destiny2_content/icons/bd176b87f172c0affdec5a8e10e5ae8c.png"},"four":{"name":"From the Storm","desc":"After being out of combat for a moderate duration, slowly gain Frost Armor until you reenter combat.","num":"Does not have the same functionality of \"being out of combat\" as the 2-piece. Extremely extremley niche, borderline PVP","rating":"E","icon":"https://www.bungie.net/common/destiny2_content/icons/046a5d59d06ab9cfb7488faacdc4b6eb.png"},"source":"Europa","sourceType":"Destination"},{"name":"Cyberserpent Null","two":{"name":"Adrenal Rush","desc":"Sprinting for a short time grants a period of improved reload speed and handling. Final blows extend this period.","num":"Triggers after 5 seconds","rating":"D","icon":"https://www.bungie.net/common/destiny2_content/icons/3b8036591bab64740db750efb05aab31.png"},"four":{"name":"Bountiful Munitions","desc":"While Adrenal Rush is active, final blows grant Special Ammo progress. Final Blows against powerful combatants, Guardians, and Taken grants additional progress.","num":"","rating":"D","icon":"https://www.bungie.net/common/destiny2_content/icons/c23f5d490b3084d0f051395dc16bdb42.png"},"source":"Gambit + Gambit Engrams","sourceType":"Portal + Vendor (Drifter)"},{"name":"Dark Age","two":{"name":"Taking Initiative","desc":"Hitting combatants with melee attacks or Sword strikes grants a stack of Initiative, giving bonus handling and reload. Stacks decay slowly over time.","num":"Initiative stacks up to 5x  and lasts for 8 seconds per stack, decaying 1 at a time","rating":"C","icon":"https://www.bungie.net/common/destiny2_content/icons/5be6f5f0e14a37f1efe37644f37faa15.png"},"four":{"name":"Healing Initiative","desc":"While you have Initiative, using your class ability creates a stationary healing aura. The aura gains increased healing based on the number of Initiative stacks.","num":"Upon Class ability usage, deploys stationary Healling Drone that heals every 2 seconds. Health restored is +10 HP (+50 HP Max) per initiative stack and can pulse up to 5 times per Class Ability use","rating":"S","icon":"https://www.bungie.net/common/destiny2_content/icons/0273d18ef76b07eadc49e9ca2d131e73.png"},"source":"Warlord's Ruin","sourceType":"Dungeon"},{"name":"Deep Explorer","two":{"name":"Built Bitter","desc":"Taking damage increases the reload speed of your equipped weapon until it is stowed. Taking more damage increases the effect.","num":"Stacks to 10x. Self Damage does not count. ~+50 reload speed and ~.85x -.9x Reload Duration Multiplier at MAX stacks","rating":"B","icon":"https://www.bungie.net/common/destiny2_content/icons/3384d936001688833ae09fa92cb280f5.png"},"four":{"name":"Bittersweet","desc":"When you stow a weapon, restore health based on the number of Built Bitter stacks lost.","num":"~+35 HP at 1 stack (Full Heal at >8x stacks) Healing seems to be inconsistent and can provided substantially more health sometimes.","rating":"C","icon":"https://www.bungie.net/common/destiny2_content/icons/2160d0b4551f285830bdf344f47a8a9d.png"},"source":"Duality","sourceType":"Dungeon"},{"name":"Disaster Corps","two":{"name":"Pleas Heard","desc":"Reloading an Auto Rifle, Scout Rifle, or Sidearm after a final blow slowly restores health until you reenter combat.","num":"Healing is 20 HP/s after reloading within 3 seconds of a kill. Lasts until any \"combat\" action is taken (ability use, weapon, class, super, take damage).","rating":"B","icon":"https://www.bungie.net/common/destiny2_content/icons/ff4d0d19141fee88ce61994a3aea8bbc.png"},"four":{"name":"Magnificent Duty","desc":"When you reach critical health or heal an ally at critical health, Auto Rifles, Scout Rifles, and Sidearms gain a period of increased range, stability, and reload speed.","num":"Grants +20 Range, +20 Stability, +30 Reload Speed, and .9x Reload Duration Multiplier to listed weapons for 11 seconds.","rating":"D","icon":"https://www.bungie.net/common/destiny2_content/icons/5dee6c3209d00db6558954aec7fa7219.png"},"source":"Crucible Engrams","sourceType":"Vendor (Shaxx)"},{"name":"Dreambane","two":{"name":"Nightmarish Power","desc":"Final blows to a challenging combatant or higher-ranked target grant Unstable Essence. When you have Unstable Essence, you receive grenade and melee stat bonuses.","num":"Buff triggers on elite+, lasts for 15 seconds, and grants +30 to melee and grenade stat.","rating":"C","icon":"https://www.bungie.net/common/destiny2_content/icons/589460862ff8d80364db3a9b6205e071.png"},"four":{"name":"Nightmarish Resilience","desc":"When you have Unstable Essence, rapid weapon damage or final blows heal you and begin health regeneration.","num":"While buff is active, 8 damage instances  within 3 seconds each (only counted once per .45 seconds) Begins Critical Health Regeneration and restores 20 HP. 2 second internal cooldown.","rating":"B+","icon":"https://www.bungie.net/common/destiny2_content/icons/8d927506b9d4310414df97a1da85210e.png"},"source":"Moon","sourceType":"Destination"},{"name":"Eutechnology","two":{"name":"Gift of the Ley Lines","desc":"Rapidly defeating combatants with Void energy spawns a Void breach.","num":"Requirement is 3 Void kills within 5 seconds of each other.","rating":"B","icon":"https://www.bungie.net/common/destiny2_content/icons/a304f92290458d486ab19fcd1ef6f6ff.png"},"four":{"name":"Techeun's Foresight","desc":"After collecting a Void breach, your next final blow with a Void weapon triggers a detonation. The detonation is more powerful if it is triggered quickly after collecting a Void breach.","num":"Techeun's Foresight granted on collecting void breach: next void weapon  kill triggers a 3 meter Void detonation for 87 Damage. If Void breach collection is rapid, grants Techeun's Clairvoyance: next void weapon kill triggers a 5 meter Void detonation for 173 damage","rating":"B","icon":"https://www.bungie.net/common/destiny2_content/icons/7a80a0a2d1abacd0ce64e71bafff34f3.png"},"source":"Pinnacle + Vanguard Engrams","sourceType":"Portal + Vendor (Zavala)"},{"name":"Exodus Down","two":{"name":"Emergency Electromagnet","desc":"When your shields become broken, collect all nearby Orbs of Power and ammo bricks.","num":"Radius is 10 meters. Picking up multiple orbs will grant multiple stacks of 4-piece Repurposed charge buff.","rating":"B+","icon":"https://www.bungie.net/common/destiny2_content/icons/8b11633d8026079a0841ca92c211a713.png"},"four":{"name":"Repurposed Charge","desc":"Whenever you gain, lose, or spend an Armor Charge, heal and gain damage reduction for a short time. This effect scales with the amount of Armor Charge gained, lost, or spent.","num":"Grants +5 HP per Armor charge change, with duration = 3 seconds * stacks. The change scales based off SIMULTANEOUS gains/loses. Maxes out at x7 stacks. x2 = 13% DR, x3 =21% DR, x4 = 29.5% DR, x7 = 35% DR","rating":"S","icon":"https://www.bungie.net/common/destiny2_content/icons/98a8854b4477cb8a722024a7015dcf89.png"},"source":"Nesus","sourceType":"Destination"},{"name":"Ferropotent","two":{"name":"Rapid Repair","desc":"When your shields begin to regenerate, you gain flinch resistance and damage resistance for a short time.","num":"Grants 10% Damage Resist and ? flinch resist for 7 seconds","rating":"B+","icon":"https://www.bungie.net/common/destiny2_content/icons/a3ce83264ba9520c563cf6d621c66565.png"},"four":{"name":"Built from Scratch","desc":"While your reserves are low, combatant final blows with weapons provide additional ammo progress based on their ammo type. Primary ammo weapons boost Special ammo progress, and Special ammo weapons boost Heavy ammo progress.","num":"Primary's grant +3% special progess and Special's grant +2% Heavy ammo progress on Low Ammo Reserves.","rating":"C","icon":"https://www.bungie.net/common/destiny2_content/icons/354d07625ba9f6806c4062e2711c5f0f.png"},"source":"Vanguard Engrams","sourceType":"Vendor (Zavala)"},{"name":"First Ascent","two":{"name":"Stack 'Em Up","desc":"Defeating targets with unique elemental damage grants a stacking bonus to Transcendence energy gains while Transcendence is inactive.","num":"Buff duration is 24 seconds, refreshed on unique elemental kill. CANNOT refresh once all 5 elements have been utilized.","rating":"A","icon":"https://www.bungie.net/common/destiny2_content/icons/0d086c527eb8a84290ceea3d2069bf69.png"},"four":{"name":"Burn 'Em Down","desc":"While Transcendence is active, using your grenade ability consumes all stacks of Stack 'Em Up to grant an escalating amount of grenade energy.","num":"Grants 6% Prismatic Grenade energy per stack of Stack 'Em up used up to 30% at maximum.","rating":"B","icon":"https://www.bungie.net/common/destiny2_content/icons/65a58789810d5617352736c279d51edb.png"},"source":"Pale Heart + Pale Heart Engrams","sourceType":"Destination + Vendor (Ghost)"},{"name":"Flain","two":{"name":"Sinew Stitching","desc":"Taking damage from combatants sometimes spawns a Threadling.","num":"","rating":"D","icon":"https://www.bungie.net/common/destiny2_content/icons/c1e6c0367ad681dada7bb3f4f2affd04.png"},"four":{"name":"Knit Together","desc":"For a short time after your shields break, your next several Threadling hits restore health.","num":"","rating":"C+","icon":"https://www.bungie.net/common/destiny2_content/icons/4b3cbd3ca5f5ffa0b6d484f139d1c006.png"},"source":"Sundered Doctrine","sourceType":"Dungeon"},{"name":"Great Hunt","two":{"name":"Taken Barrier","desc":"Grenade final blows temporarily reduce incoming damage.","num":"Grants Damage Resist x1 (10%) for 7 seconds","rating":"A","icon":"https://www.bungie.net/common/destiny2_content/icons/28dc5b70823b878a972034c6eb05e666.png"},"four":{"name":"Taken Armaments","desc":"Grenade final blows grant additional Heavy ammo progress.","num":"","rating":"B","icon":"https://www.bungie.net/common/destiny2_content/icons/738273f563c6cc73bfde01357418adde.png"},"source":"Last Wish","sourceType":"Raid"},{"name":"Iron Battalion","two":{"name":"Primary Honing","desc":"Increases handling and reload speed for Primary ammo weapons. Primary ammo weapons gain increased damage against non-boss combatants based on your Weapons stat.","num":"Damage bonus is around 12.5% bonus damage against non-boss combatants at 200 Weapons Stat compared to 100 Weapons Stat. Does NOT affect boss combatants.","rating":"S","icon":"https://www.bungie.net/common/destiny2_content/icons/c3cc01210cee6c18152563202b5ac57d.png"},"four":{"name":"Supercyclical","desc":"Final blows while your Super is active refund Super energy when it ends.","num":"Returns up to 30% super based on kills in super/with super. Works with Well of Radiance, works with bubble (melee kills holding bubble ONLY), does stack with super-generating exotics, enemy tier scales super gains to maximum 30% quicker. Around 6 red bar kills for max gains","rating":"S","icon":"https://www.bungie.net/common/destiny2_content/icons/d8a71c6aa15a6a1d14ab7fc8e13e203c.png"},"source":"Iron Banner","sourceType":"Portal"},{"name":"Iron Panoply","two":{"name":"Vigilant Watch","desc":"As your health gets lower, your weapons gain increased stability and handling. Weapon final blows while your shields are depleted heal you.","num":"Grants +30 HP on weapon kills when shields broke. 5 Second internal cooldown.","rating":"D","icon":"https://www.bungie.net/common/destiny2_content/icons/141304b7b66d2b8fad5b72c4ad29c40f.png"},"four":{"name":"Iron Conviction","desc":"When your shields become broken, you gain increased ammo generation, flinch resistance, and damage resistance against nearby combatants for a short time. Final blows extend this effect.","num":"Grants +35 ammo Regeneration stat, 15% Damage resist against Combatants within 15 meters for 7 seconds. Additional kills refresh buff duration. Buff cant retrigger until any shield has been recovered.","rating":"B","icon":"https://www.bungie.net/common/destiny2_content/icons/729f24f6efeca3f59162885c8eddbaf3.png"},"source":"Iron Banner Engrams","sourceType":"Vendor (Saladin)"},{"name":"Kentarch 3","two":{"name":"Network Admin","desc":"Being near allies creates a relay network that gives the wearer improved handling and reload speed. Being near other allied Network Admins additionally grants the wearer a bonus to Health stat.","num":"","rating":"D","icon":"https://www.bungie.net/common/destiny2_content/icons/aae858b35a0768b44be303cf9ae15d52.png"},"four":{"name":"Network Upload","desc":"Weapon final blows grant the wearer and nearby allies melee energy.","num":"","rating":"D","icon":"https://www.bungie.net/common/destiny2_content/icons/67080f11f3487aa8e442609becfdae93.png"},"source":"Garden of Salvation","sourceType":"Raid"},{"name":"Last Discipline","two":{"name":"Terminal Velocity","desc":"Final blows with primary ammo weapons grant your primary ammo weapons temporarily increased reload speed.","num":"Grants +20 reload speed and .95x Reload Duration Multiplier for Primary Weapons for 6 Seconds. Triggers on Constructs as well.","rating":"D","icon":"https://www.bungie.net/common/destiny2_content/icons/6d90a805ee5c1a2a3eafe5b64b29f1ec.png"},"four":{"name":"Power Loader","desc":"Picking up an Orb of Power grants special ammo progress.","num":"Grants 6% Special Ammo Progress on Orb pickup.","rating":"D","icon":"https://www.bungie.net/common/destiny2_content/icons/c918b80d815f1a54755a0b9b8fcbf7ed.png"},"source":"Crucible Engrams","sourceType":"Vendor (Shaxx)"},{"name":"Legacy's Oath","two":{"name":"Augmented Servos","desc":"Powered melees release an additional disorienting pulse when used to defeat a target.","num":"Disorient triggers .67 seconds after combatant death in a 10 meter radius that applies Disorient for 2.5 Seconds.","rating":"A","icon":"https://www.bungie.net/common/destiny2_content/icons/dc92ca1a287bff0693fe128baff9df35.png"},"four":{"name":"God-like Judgment","desc":"When your shields are broken by a combatant, or upon casting your Super, release a swarm of heat seeking micro-missiles.","num":"Critical Health releases 2 680 Damage micromissiles while casting super releases 4 680 Damage micromissiles.","rating":"B","icon":"https://www.bungie.net/common/destiny2_content/icons/a33ab7d65a4aa836142ee869b0423c66.png"},"source":"Deep Stone Crypt","sourceType":"Raid"},{"name":"Luminopotent","two":{"name":"Ionic Overclock","desc":"While amplified, your Fusion Rifles, Linear Fusion Rifles, and Heat weapons gain increased handling, reload, and vent speeds.","num":"","rating":"D","icon":"https://www.bungie.net/common/destiny2_content/icons/6999410ff04b4144a07c39fbca5ea831.png"},"four":{"name":"Shock and Clear","desc":"Final blows with Jolt or against jolted combatants create Ionic Traces.","num":"","rating":"C","icon":"https://www.bungie.net/common/destiny2_content/icons/bdd6424d0b5dbee52505d969653c69e0.png"},"source":"Fireteam + Vanguard Engrams","sourceType":"Portal + Vendor (Zavala)"},{"name":"Lustrous","two":{"name":"Photogalvanic","desc":"Receiving healing temporarily grants your Solar weapons increased flinch resistance, handling, and reload speed.","num":"Grants +20 Handling, + 10 Reload Speed, .85x Reload Duration Multipler and Flinch resist for Solar weapons upon ANY sources of healing while not at full HP","rating":"D","icon":"https://www.bungie.net/common/destiny2_content/icons/3c9918529fb85eb95b151c2461b63b9c.png"},"four":{"name":"Cauterize","desc":"Rapid Solar final blows heal you.","num":"Grants +35 HP after 3 Solar kills within 3 seconds of each other. Small internal cooldown.","rating":"C","icon":"https://www.bungie.net/common/destiny2_content/icons/fb229a054586415903e6539ea363f63a.png"},"source":"Solstice","sourceType":"Tenet Of Bravery"},{"name":"New Demotic","two":{"name":"Paroli","desc":"Primary ammo weapons gain a bonus to flinch resistance after sliding.","num":"","rating":"PVP","icon":"https://www.bungie.net/common/destiny2_content/icons/d4ce701db7e340f651fc7683fa615599.png"},"four":{"name":"Martingale","desc":"Your weapons gain a temporary increase to handling and aim-down-sights speed when an ally is defeated or you revive an ally.","num":"","rating":"PVP","icon":"https://www.bungie.net/common/destiny2_content/icons/8702ce0687c6933b63075a7456620954.png"},"source":"Trials of Osiris Engrams","sourceType":"Vendor (Saint-14)"},{"name":"Nezarec's Nightmare","two":{"name":"Bad Dreams","desc":"Final blows versus subclass-debuffed targets have an escalating chance to spawn an Orb of Power.","num":"Requires 3 elementally debuffed kills to spawn an orb. No internal cooldown?","rating":"B","icon":"https://www.bungie.net/common/destiny2_content/icons/353f44c5dc35f53b9cbdc5e7275e79f5.png"},"four":{"name":"Dream-Devourer","desc":"Performing a finisher versus a powerful combatant grants Devour. While you have Devour, gain damage resistance versus combatants.","num":"Grants Devour for 6 (+3) Seconds, while Devour is active, gain +20% Damage Resist against Combatants.","rating":"S","icon":"https://www.bungie.net/common/destiny2_content/icons/7c6a982de9632a3a04dbe1c9a51fc150.png"},"source":"Root of Nightmares","sourceType":"Raid"},{"name":"Oryx's Memory","two":{"name":"Iron Sharpens Iron","desc":"Final blows on Guardians and powerful combatants generate additional ammo progress.","num":"Dont know numbers yet but its a lot.","rating":"S","icon":"https://www.bungie.net/common/destiny2_content/icons/c4d21817ea6e205ff95639019a38e7e2.png"},"four":{"name":"Ascendant Escape","desc":"After a final blow on a powerful combatant, the next time your shields are broken, you become invisible.","num":"Duration of invisibility is ~6 seconds","rating":"B","icon":"https://www.bungie.net/common/destiny2_content/icons/e1e76d3824a761cf038e1f9d9be7c84f.png"},"source":"King's Fall","sourceType":"Raid"},{"name":"Per Audacia","two":{"name":"Primary Chain","desc":"Primary ammo weapon final blows grant a stacking bonus to mobility and Primary weapon range and handling until you are defeated.","num":"","rating":"D","icon":"https://www.bungie.net/common/destiny2_content/icons/495764dd5f65e2232fb197614a6242bc.png"},"four":{"name":"Sublime Transit","desc":"Increases mobility and grants enhanced sprint speed and slide distance.","num":"","rating":"D","icon":"https://www.bungie.net/common/destiny2_content/icons/6c68d32bd7dd8a61b059c44ac1218272.png"},"source":"Crucible (Comp) + Crucible Engrams","sourceType":"Portal + Vendor (Shaxx)"},{"name":"Promised","two":{"name":"Stable Resonance","desc":"Defeating a powerful combatant generates Stable Resonance, which grants damage resistance and increased weapon damage for the duration.","num":"Grants 7% increased damage and 25% Damage Resist for 12 Seconds on Orange bar+ kill","rating":"S","icon":"https://www.bungie.net/common/destiny2_content/icons/f49ca4f83e2c2f9bc8b8fb331ccf58d7.png"},"four":{"name":"Resonance Redirection","desc":"While you have Stable Resonance, continued weapon damage occasionally generates a resonance burst that damages and exhausts targets.","num":"Dealing ~600 Damage triggers an 8-meter radius Exhausting Blast that deals damage and inflicts exhaustion. ~2 second internal cooldown.","rating":"A","icon":"https://www.bungie.net/common/destiny2_content/icons/e4510ff158987fee7ac3953391f6435e.png"},"source":"Salvation's Edge","sourceType":"Raid"},{"name":"Resonant Fury","two":{"name":"Resonant Plating","desc":"Your health begins regenerating immediately after taking melee damage from a powerful combatant.","num":"Health Regeneration Triggers on Miniboss+ melee hits","rating":"C","icon":"https://www.bungie.net/common/destiny2_content/icons/f7405da4c3f5e18e0a29f4ceca3aa8b0.png"},"four":{"name":"Siphoning Touch","desc":"Gain stacks of Siphoning Touch for weapon or Glaive melee hits. Switching weapons heals you and consumes all stacks.","num":"Stacks up to 5x. Consumes all stacks on weapon stow and Heals +30 HP per stack consumed.","rating":"D","icon":"https://www.bungie.net/common/destiny2_content/icons/4678088483fa5ea38f509a02e24faf21.png"},"source":"Vow of the Disciple","sourceType":"Raid"},{"name":"Reverie Dawn","two":{"name":"A Wish for Protection","desc":"Taking significant damage in a short time generates a Protective Wish that makes it harder for combatants to hit you, and grants increased reload speed and flinch resistance.","num":"Buff duration is 7 seconds and incurs a 5 second internal cooldown before it can be triggered again","rating":"B","icon":"https://www.bungie.net/common/destiny2_content/icons/f61c57bf97db2da78a537c7933e45b94.png"},"four":{"name":"A Wish Fulfilled","desc":"When the Protective Wish expires, it cures you. Rapid final blows prematurely end the Protective Wish.","num":"Grants Cure x1","rating":"D","icon":"https://www.bungie.net/common/destiny2_content/icons/6882c7bf6dbcd564e9ef00a41818c9fd.png"},"source":"Dreaming City","sourceType":"Destination"},{"name":"Sage Protector","two":{"name":"Combat Meditation","desc":"Sword hits return grenade and class energy. Bonus energy is granted if Blade Focus is active.","num":"Grants 3% Grenade and Class Ability enrgy per Sword Hit. Bonus increase to 8% with Blase Focus Active.","rating":"S","icon":"https://www.bungie.net/common/destiny2_content/icons/899fc042368ce701ca12f69df23dcc38.png"},"four":{"name":"Blade Focus","desc":"Briefly guard with a Sword to ready Blade Focus. While Blade Focus is readied, hitting a target with your sword increases Sword damage and lunge distance for a moderate duration.","num":"After guarding for 1.35 seconds then hitting a target, grants Blade focus: +10% bonus sword damage, +100% sword lunge range, buff duration 7 seconds or on sword guard or stow.","rating":"C","icon":"https://www.bungie.net/common/destiny2_content/icons/a19540f5e54c76044c91fbac06f697ed.png"},"source":"Equilibrium","sourceType":"Dungeon"},{"name":"Seventh Seraph","two":{"name":"Rasputin's Wrath","desc":"Final blows with area-of-effect damage, Solar abilities, Seventh Seraph weapons, or IKELOS weapons grant Warmind Charges. Each stack of Warmind Charge increases your Weapons and Grenade stats.","num":"Stacks up to 10x with a duration of 10 seconds. All stacks disappear on expiration. Each stack grants +3 grenade stat and +3 weapon stat up to +30 maximum for each","rating":"A","icon":"https://www.bungie.net/common/destiny2_content/icons/18b5bd384a62c9f960e1f46907987f48.png"},"four":{"name":"Rasputin's Reprisal","desc":"While you have Warmind Charges, defeating powerful combatants, destroying a construct, or destroying a Tangle releases a Solar detonation that damages combatants and heals allies. Constructs include barricades, turrets, Stasis crystals, and other objects created in the field.","num":"On Elite+ Kill: Damage is 405 Solar Damage, restoring +50HP to user and allies over 10 meters. On Construct Kill: ~half damage and health over same radius. Warmind detonations can grant warmind stacks but not chain into other warmind detonations. .3 second internal cooldown.","rating":"S","icon":"https://www.bungie.net/common/destiny2_content/icons/991a1596482cd22ca393a748c2aa412c.png"},"source":"Cosmodrome","sourceType":"Destination"},{"name":"Shrewd Survivor","two":{"name":"Reflex Action","desc":"Swapping to a Heat weapon, Submachine Gun, or Hand Cannon grants a short period of increased handling and accuracy. This effect is extended by dealing damage with that weapon.","num":"Duration is 1.5 seconds. Dealing damage extends duration. Grants +50 handling, .6x Ready Duration Multiplier, and -2.5% Accuracy Cone Size for 1.5 seconds","rating":"PVP","icon":"https://www.bungie.net/common/destiny2_content/icons/7f09f6e0067a733d41e745781bc402a9.png"},"four":{"name":"Hotshot","desc":"Dealing final blows while Reflex Action is active grants a bonus to weapon stat and increases stability, reload, and aim assist for Heat weapons, Submachine Guns, and Hand Cannons for a moderate duration.","num":"Scoring a kill grants Hotshot for 10 seconds: +15 Stability, +20 Reload Speed, Bonus Aim Assist, and +30 Weapons stat","rating":"E","icon":"https://www.bungie.net/common/destiny2_content/icons/04b973a7cfccbd68319667558dcbe82c.png"},"source":"Lawless Frontier","sourceType":"Destination"},{"name":"Smoke Jumper","two":{"name":"Ride Together, Die Together","desc":"When you pick up an Orb of Power, gain a brief period of rapidly decaying damage reduction.","num":"Buff duration is 3 seconds. Initially grants 40% DR, scales down to 30% within 1.5 seconds and is further reduces to 24% with 1 second left, decreasing to 0% at no time remaining.","rating":"A","icon":"https://www.bungie.net/common/destiny2_content/icons/e752466e7923c7137927722f38f18550.png"},"four":{"name":"Too Old for This","desc":"Defeating a powerful combatant with a finisher grants you Special ammo progress and replenishes a small amount of health.","num":"Grants 16% Special Ammo Progress and restores +35 HP on elite+ finisher","rating":"D","icon":"https://www.bungie.net/common/destiny2_content/icons/a76d27306334a934577ef92a037f2ce0.png"},"source":"Vanguard Engrams","sourceType":"Vendor (Zavala)"},{"name":"Spacewalk","two":{"name":"Augmented Armaments","desc":"Primary ammo weapons deal increased damage to disoriented combatants.","num":"The damage bonus is +15% against disoriented combatants, but does NOT work with Arc Blind.","rating":"C","icon":"https://www.bungie.net/common/destiny2_content/icons/c69c2f408beb711a0529712a53abe120.png"},"four":{"name":"Augmented Explosives","desc":"Your grenade abilities release an additional disorienting pulse shortly after detonating.","num":"","rating":"C","icon":"https://www.bungie.net/common/destiny2_content/icons/fe4bf02ec75185ba071c0a30b53f8037.png"},"source":"Vespers Host","sourceType":"Dungeon"},{"name":"Swordmaster","two":{"name":"Balestra","desc":"Damaging a target with a Sword, Glaive, or any melee attack exhausts them. Exhausted targets deal reduced outgoing damage.","num":"No internal cooldown","rating":"B","icon":"https://www.bungie.net/common/destiny2_content/icons/a29d645f714faf4f59a2a2f5e0cf6f70.png"},"four":{"name":"Stesso Tempo","desc":"Blocking attacks with a Sword or Glaive grants a short period of damage resistance against targets when you next drop your guard.","num":"Upon Blocking, grants 50% Damage Resist for 3 seconds after Guard is dropped. No internal Cooldown.","rating":"B","icon":"https://www.bungie.net/common/destiny2_content/icons/837bdc2b437d0ed6da5d665b59af7ebc.png"},"source":"Vanguard Engrams + Postmaster","sourceType":"Vendor (Zavala) + Lost Sectors*"},{"name":"Taken King","two":{"name":"The Ceremony","desc":"Finishing combatants or reviving allies initiates a Lucent Hive ritual. While the ritual is active, gain increased Super stat.","num":"Duration of Ceremony is 30 Seconds. Buff can be refreshed up to a max of 30 seconds. Grants + 30 Super Stat while active.","rating":"C","icon":"https://www.bungie.net/common/destiny2_content/icons/3e8ebec7f43a113e821dc29827165316.png"},"four":{"name":"Lucent Swarm","desc":"Collecting Orbs of Power extends the Ceremony. While it is active, ability final blows occasionally spawn allied Arc moths.","num":"Scoring 2 ability kills spawns a Loyal Arc moth with 8 second duration. The moth chases enemies within 60+ meters and deal 180 damage, inflcting blind for 8 seconds over ~6 meters. All means of Bolt Charge discharge trigger can spawn the moth (except praxic blade).","rating":"C","icon":"https://www.bungie.net/common/destiny2_content/icons/a0480d71e1dea57fbea74496dd31e13a.png"},"source":"Ghosts of the Deep","sourceType":"Dungeon"},{"name":"Techeun's Regalia","two":{"name":"Queensfoil Rush","desc":"Gain a powerful overshield while performing your finisher. When you finish a target, release a slowing burst around you.","num":"Grants a +200 HP Overshield for the duration of the finisher. The slow radius is 7 meters","rating":"B","icon":"https://www.bungie.net/common/destiny2_content/icons/a57b51a297cda79eacb02322ada388ea.png"},"four":{"name":"Truth to Power","desc":"Gain increasing damage resistance when you deal damage or land final blows. Finishers grant accelerated progress. At max stacks, the recharge rate of your abilities is also increased.","num":"Each Damage instance scored grants Truth stacks, up to x999 stacks. Kills/finishers grant more stacks. Truth grants Damage Resist: x250 = 3.75%, x500 = 7.5%, x750 = 10%, x999 = 15%. At x999, turns into power, which boosts Ability Regeneration Rate on top of the DR.","rating":"S","icon":"https://www.bungie.net/common/destiny2_content/icons/4449e9beedbec136551849b5a8802b35.png"},"source":"Shattered Throne","sourceType":"Dungeon"},{"name":"Techsec","two":{"name":"Wrecker","desc":"You deal significantly increased Kinetic damage to combatant shields, overshields, vehicles, and constructs. Constructs include barricades, turrets, Stasis crystals, and other objects created in the field.","num":"Passively grants +200% increased Kinetic Damage towards Combatant Shields and Overshields. 15% increased Kinetic Damage towards Constructs.","rating":"B","icon":"https://www.bungie.net/common/destiny2_content/icons/bd2c44c6cb6a7f2a168a90be278aa8c4.png"},"four":{"name":"Concussive Rounds","desc":"Defeating powerful combatants or breaking a combatant shield with Kinetic damage releases a disorienting Kinetic shockwave.","num":"Disorienting Blast deals 162 Kinetic Damage, Heavy staggering, and inflicts disorient in a 10 meter radius.","rating":"A","icon":"https://www.bungie.net/common/destiny2_content/icons/56a10b99ed0b4b28d33696ec828b29b5.png"},"source":"Vanguard Engrams + Postmaster","sourceType":"Vendor (Zavala) + Lost Sectors*"},{"name":"Thriving Survivor","two":{"name":"Opening Act","desc":"Final blows with grenades grant Heat weapons bonus stability and vent speed and grant Primary ammo weapons bonus stability and reload speed.","num":"Duration of buff is 15 seconds.","rating":"C","icon":"https://www.bungie.net/common/destiny2_content/icons/9763eb72bc446b9d9f1b2c2b5efca82d.png"},"four":{"name":"Room Clearing","desc":"Multiple final blows with Heat weapons or Primary ammo weapons grant bonuses to weapon and grenade stats and increased ammo generation for Heat weapons and Primary ammo weapons.","num":"Triggers upon scoring 3 kills within 4 seconds of each and grants Room Clearing: Buff duration is 10 seconds and grants +40 Grenade and +40 Weapons Stat and +40 ammo generation for Heat/primary ammo weapons.","rating":"B+","icon":"https://www.bungie.net/common/destiny2_content/icons/319e1b357fb1e2b7108f489f792c31ed.png"},"source":"Lawless Frontier","sourceType":"Destination"},{"name":"Thunderhead","two":{"name":"License to Thrill","desc":"Activating your grenade or the Nanotech Tracer Missiles Origin Trait provides stacking resistance to incoming damage at point-blank range.","num":"Buff can stack up to x10 and lasts for 15 seconds. Quicksilver Storm micromissiles do synergize. Damage Resist at x1 stack is 12% against enemies within 5 meters. This scales up to 30% Damage Resist at max stacks.","rating":"C","icon":"https://www.bungie.net/common/destiny2_content/icons/41f83623b1974e71b4e008b6baeb6269.png"},"four":{"name":"Lethal Weave","desc":"Defeating an unraveled combatant grants grenade ability energy. If you have max grenade energy, you are granted Special ammo meter progress instead.","num":"","rating":"B-","icon":"https://www.bungie.net/common/destiny2_content/icons/39749db8864643f96bb20296732d4e8d.png"},"source":"Neomuna","sourceType":"Destination"},{"name":"TM Custom","two":{"name":"Old Martian Diplomacy","desc":"Stowing a weapon after defeating a powerful combatant or a Guardian heals you a small amount and disorients nearby combatants.","num":"","rating":"C","icon":"https://www.bungie.net/common/destiny2_content/icons/07bba1454e20ee9358ed61c4f20b7c34.png"},"four":{"name":"High Noon","desc":"Freshly drawn weapons deal increased precision damage to combatants for a short period. Weapons with the Tex Balanced Stock Origin Trait equipped or Exotics manufactured by the Tex Mechanica Foundry gain further increased benefits.","num":"Grants +7% increased Precision Damage against Combatants for 3 Seconds. Bonus Doubles to +15% for Tex weapons Origin trait weapons and exotics, including DMT, Huckleberry, Lasy Word, Tarrabah, Chaperone, and Prospector.","rating":"A","icon":"https://www.bungie.net/common/destiny2_content/icons/14b1ff03aa7eab854f220fdd32adf0ec.png"},"source":"Spire of the Watcher","sourceType":"Dungeon"},{"name":"Triumphal Anthem","two":{"name":"Scoot to Loot","desc":"Sliding collects nearby ammo and temporarily grants enhanced reload speed and handling to your weapons.","num":"","rating":"PVP","icon":"https://www.bungie.net/common/destiny2_content/icons/cac950e06b8de21fafa8aca1ba217a4c.png"},"four":{"name":"Shoot to Scoot","desc":"Dealing damage with your weapons temporarily grants enhanced sliding. Sliding provides damage resistance.","num":"","rating":"PVP","icon":"https://www.bungie.net/common/destiny2_content/icons/69c0437e7a2926aeb72b0395f4b88beb.png"},"source":"Crucible + Crucible Engrams","sourceType":"Portal + Vendor (Shaxx)"},{"name":"Twofold Crown","two":{"name":"Crook and Flail","desc":"Picking up an ammo brick heals you.","num":"Grants +70 HP on Ammo Brich Pickup","rating":"B","icon":"https://www.bungie.net/common/destiny2_content/icons/b80634df8d4c10ccd0b3d77f6c03094d.png"},"four":{"name":"Gift of Sight","desc":"Final blows with Primary ammo weapons grant you briefly increased radar resolution.","num":"Duration is 5 seconds and can trigger off constucts.","rating":"E","icon":"https://www.bungie.net/common/destiny2_content/icons/d45b0c7e60cb34ef703d20c85e3737a5.png"},"source":"Trials of Osiris Engrams","sourceType":"Vendor (Saint-14)"},{"name":"Veritas","two":{"name":"Lucent Transmutation","desc":"Performing a finisher on a combatant, or landing successive powered melee final blows, generates an Elemental pickup based on your Light subclass.","num":"Requires a finisher or 2 melee final blows (small .2 second cooldown between kills for some reason. DOES NOTHING if Strand/Stasis super is equipped.","rating":"B","icon":"https://www.bungie.net/common/destiny2_content/icons/94133689fdafe43c92af39875e4b35cf.png"},"four":{"name":"Lucent Tithes","desc":"Performing a finisher on powerful combatants heals you and generates loyal Void moths.","num":"On elite+ finisher, Restores +50 HP and spawns 3 Loyal Void Moths that grant 22.5 HP Void Overshield to user and allies on impact.","rating":"B+","icon":"https://www.bungie.net/common/destiny2_content/icons/9ca2d24cfb79d72ec09ddd3c78a19e75.png"},"source":"Throne World + Throne World Engrams","sourceType":"Destination + Vendor (Fynch)"},{"name":"Wayward Psyche","two":{"name":"Special Relativity","desc":"Picking up ammo reloads stowed Special weapons from reserves.","num":"Fully reloads","rating":"D","icon":"https://www.bungie.net/common/destiny2_content/icons/daf157f0334a83d1870ef0f325b1c25a.png"},"four":{"name":"Superluminal Motion","desc":"After dealing damage with your Super, health and shields regenerate over time while you are in motion. Additional Super damage refreshes this effect.","num":"Restores +30 HP/S for 11 seconds as long as you are moving.","rating":"D","icon":"https://www.bungie.net/common/destiny2_content/icons/bfaac852d350fb7cabb9a7a06deef4a6.png"},"source":"The Desert Perpetual (Epic)","sourceType":"Raid"},{"name":"Wild Anthem","two":{"name":"Fanfare","desc":"Gain increased reload speed for the bottom half of your equipped weapon's magazine.","num":"While ammo is <= 50% or Magazine AND Ammo isnt 0, +15 Reload Speed and .95x Reload Duration Multiplier. Does not work with Bows, GLs, or Rockets (unless magazine isnt 1).","rating":"PVP","icon":"https://www.bungie.net/common/destiny2_content/icons/403810a27b0b33248f7a876904e1977b.png"},"four":{"name":"Suros Harmony","desc":"Reloading a weapon grants it a bonus to handling and reduces incoming flinch for a short time. Weapons with the SUROS Synergy Origin Trait are granted increased range instead.","num":"After reload, +30 handling and some flinch resistance for 6 seconds. The Range benefit for the origin trait is +15 Range. Persists through stow only on the weapon it was initially triggered on.","rating":"PVP","icon":"https://www.bungie.net/common/destiny2_content/icons/d3959132415be3779f6e2a46dbb531f6.png"},"source":"Crucible + Crucible Engrams","sourceType":"Portal + Vendor (Shaxx)"},{"name":"Wildwood","two":{"name":"Watchtower","desc":"Precision final blows while aiming down sights grant damage resistance until you stop aiming down sights.","num":"After a kill, Grants Resist x2 (25% Damage Resist) until no longer ADS","rating":"C","icon":"https://www.bungie.net/common/destiny2_content/icons/4e2aece7b23761d572a716fa737c5d2d.png"},"four":{"name":"Field Expertise","desc":"Precision final blows with any weapon grant a stacking bonus to reload speed, target acquisition, and weapon damage against non-boss combatants for a short duration. Weapon final blows with non-precision direct hits end this effect early.","num":"On precision kill, grants 1 stack of Field Expertise for 15 seconds, stacking up to 5 stacks. Lose all stacks on non-precision kill. At x1 stack, grants +3.5% non-boss combatant damage up to a max of +10% non-boss combtant damage at x5 stacks.","rating":"C","icon":"https://www.bungie.net/common/destiny2_content/icons/5311ea5b6731e151e9778deac078710c.png"},"source":"European Dead Zone","sourceType":"Destination"},{"name":"Yearning Echo","two":{"name":"Untold Greed","desc":"Picking up ammo, Orbs of Power, Elemental pickups, or destroying a Strand Tangle grants stacks of Untold Greed, slightly reducing damage taken and providing reload speed to equipped weapons. When your shields are broken, some stacks are lost.","num":"Untold Greed stacks up to x100. Reaching Critical Health removes 10 stacks.","rating":"A","icon":"https://www.bungie.net/common/destiny2_content/icons/e5e74b200fa0ca8c0a9edc63e62a4559.png"},"four":{"name":"Overflowing Coffers","desc":"While you have stacks of Untold Greed, Orbs of Power and Elemental pickups provide more of their respective energy, and Strand Tangles deal increased damage. When your shields are broken, all stacks are converted into a fountain of Orbs of Power.","num":"Testing needed. Your greed sickens me","rating":"S","icon":"https://www.bungie.net/common/destiny2_content/icons/9589b92d6863ebf09f776aad4dfbc2e3.png"},"source":"Grasp of Avarice","sourceType":"Dungeon"}];
+
+// Tier order (best → worst) + colours
+const TIERS = [
+  ["S","#059669"],["A","#16a34a"],["B+","#65a30d"],["B","#eab308"],
+  ["B-","#f59e0b"],["C+","#f97316"],["C","#ea580c"],["D","#ef4444"],
+  ["E","#b91c1c"],["PVP","#e11d48"]
+];
+const TIER_COLOR = Object.fromEntries(TIERS);
+const TIER_RANK = Object.fromEntries(TIERS.map((t,i)=>[t[0],i]));
+function rank(r){ return r in TIER_RANK ? TIER_RANK[r] : 99; }
+
+const state = { q:"", tiers:new Set(), sort:"name", dir:1 };
+const expanded = new Set();
+
+const esc = s => (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function badge(r){
+  if(!r) return '<span class="empty">—</span>';
+  if(r==="PVP") return '<span class="badge pvp">PVP</span>';
+  return '<span class="badge" style="background:'+(TIER_COLOR[r]||'#64748b')+'">'+esc(r)+'</span>';
+}
+function bonusCell(b){
+  if(!b || (!b.name && !b.desc)) return '<span class="empty">—</span>';
+  const ic = b.icon ? '<img class="bonus-ic" src="'+esc(b.icon)+'" alt="" loading="lazy">' : '';
+  let h='<div class="bonus"><div class="head">'+ic+badge(b.rating)+'<span class="bname">'+esc(b.name)+'</span></div>';
+  if(b.desc) h+='<div class="desc">'+esc(b.desc)+'</div>';
+  return h+'</div>';
+}
+function detailCol(label,b){
+  if(!b || (!b.name && !b.desc)) return '<div class="dcol"><div class="dpiece">'+label+'</div><div class="dnum none">No set bonus.</div></div>';
+  let h='<div class="dcol"><div class="dhead">'+badge(b.rating)+'<span class="dpiece">'+label+'</span></div>';
+  const ic = b.icon ? '<img class="detail-ic" src="'+esc(b.icon)+'" alt="" loading="lazy">' : '';
+  h+='<div class="dname">'+ic+'<span>'+esc(b.name)+'</span></div>';
+  if(b.desc) h+='<div class="ddesc">'+esc(b.desc)+'</div>';
+  h+='<div class="dnlabel">In-depth numbers</div>';
+  h+= b.num ? '<div class="dnum">'+esc(b.num)+'</div>' : '<div class="dnum none">No additional notes.</div>';
+  return h+'</div>';
+}
+function detailPanel(s){
+  return '<div class="detail">'
+    + detailCol("2-Piece Bonus", s.two)
+    + detailCol("4-Piece Bonus", s.four)
+    + '</div>';
+}
+const isPvp = s => s.two.rating==="PVP" || s.four.rating==="PVP";
+
+// Source-type categories → colour (matched by keyword, so combos colour each part)
+const TYPE_CATS = [
+  [/raid/i,        "#7c3aed"],
+  [/dungeon/i,     "#c026d3"],
+  [/destination/i, "#0284c7"],
+  [/portal/i,      "#0d9488"],
+  [/lost sector/i, "#475569"],
+  [/tenet/i,       "#d97706"],
+  [/vendor/i,      "#ca8a04"],
+];
+// Playlist vendors → their activity (the Portal breaks down into these)
+const VENDOR_ACTIVITY = {
+  "zavala":    ["Vanguard",         "#2563eb"],
+  "shaxx":     ["Crucible",         "#dc2626"],
+  "saint-14":  ["Trials of Osiris", "#b45309"],
+  "drifter":   ["Gambit",           "#16a34a"],
+  "saladin":   ["Iron Banner",      "#be123c"],
+};
+// Some sources imply a playlist even when the type is just "Portal"
+const SOURCE_ACTIVITY = [
+  [/sparrow racing/i, ["Crucible", "#dc2626"]],
+];
+function typeColor(part){
+  for(const [re,c] of TYPE_CATS){ if(re.test(part)) return c; }
+  return "#64748b";
+}
+function chipFor(part){
+  const m = part.match(/^Vendor\s*\((.+)\)$/i);
+  if(m){
+    const a = VENDOR_ACTIVITY[m[1].trim().toLowerCase()];
+    if(a) return {label:a[0], color:a[1]};
+    return {label:part, color:"#ca8a04"};
+  }
+  return {label:part, color:typeColor(part)};
+}
+function hexA(hex,a){ const n=parseInt(hex.slice(1),16); return 'rgba('+(n>>16&255)+','+(n>>8&255)+','+(n&255)+','+a+')'; }
+function typeChips(str, source){
+  if(!str) return '<span class="empty">—</span>';
+  const chips = str.split(/\s*\+\s*/).map(chipFor);
+  // Add a playlist chip when the source implies one (e.g. Sparrow Racing League → Crucible)
+  for(const [re,a] of SOURCE_ACTIVITY){
+    if(source && re.test(source) && !chips.some(c=>c.label===a[0])) chips.push({label:a[0], color:a[1]});
+  }
+  return '<div class="type-chips">'+chips.map(({label,color})=>
+    '<span class="tchip" style="color:'+color+';background:'+hexA(color,.12)+';border-color:'+hexA(color,.28)+'">'+esc(label)+'</span>'
+  ).join("")+'</div>';
+}
+
+function sortVal(s,key){
+  if(key==="two"||key==="four") return rank(s[key].rating);
+  return (s[key]||"").toLowerCase();
+}
+
+function render(){
+  const q = state.q.trim().toLowerCase();
+  let list = SETS.filter(s=>{
+    if(state.tiers.size && !( state.tiers.has(s.two.rating) || state.tiers.has(s.four.rating) )) return false;
+    if(q){
+      const hay=[s.name,s.two.name,s.two.desc,s.two.num,s.four.name,s.four.desc,s.four.num,s.source,s.sourceType].join(" ").toLowerCase();
+      if(!hay.includes(q)) return false;
+    }
+    return true;
+  });
+  list.sort((a,b)=>{
+    const va=sortVal(a,state.sort), vb=sortVal(b,state.sort);
+    if(va<vb) return -1*state.dir; if(va>vb) return 1*state.dir;
+    return a.name.localeCompare(b.name);
+  });
+
+  const chev='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>';
+  const rows = document.getElementById("rows");
+  rows.innerHTML = list.map(s=>{
+    const pvp = isPvp(s), open = expanded.has(s.name);
+    return '<tr class="main'+(pvp?' pvp':'')+(open?' open':'')+'" data-name="'+esc(s.name)+'">'
+      +'<td><div class="setcell">'+chev+'<div><div class="setname">'+esc(s.name)+'</div>'+(pvp?'<div class="pvp-tag">PVP</div>':'')+'</div></div></td>'
+      +'<td>'+bonusCell(s.two)+'</td>'
+      +'<td>'+bonusCell(s.four)+'</td>'
+      +'<td><span class="src">'+esc(s.source)+'</span></td>'
+      +'<td>'+typeChips(s.sourceType, s.source)+'</td>'
+      +'</tr>'
+      + (open ? '<tr class="detailrow'+(pvp?' pvp':'')+'"><td colspan="5">'+detailPanel(s)+'</td></tr>' : '');
+  }).join("");
+
+  document.getElementById("noresults").style.display = list.length? "none":"block";
+  document.getElementById("count").innerHTML = '<b>'+list.length+'</b> of '+SETS.length+' sets';
+
+  document.querySelectorAll("th.sortable").forEach(th=>{
+    const active = th.dataset.key===state.sort;
+    th.classList.toggle("sorted", active);
+    th.querySelector(".arrow").textContent = active ? (state.dir===1?"↑":"↓") : "↕";
+  });
+}
+
+// Build tier filter pills + legend
+const tiersEl = document.getElementById("tiers");
+const legendEl = document.getElementById("legend");
+TIERS.forEach(([t,c])=>{
+  const pill=document.createElement("span");
+  pill.className="tier-pill"; pill.dataset.tier=t;
+  pill.innerHTML='<span class="dot" style="background:'+c+'"></span>'+t;
+  pill.onclick=()=>{
+    if(state.tiers.has(t)) state.tiers.delete(t); else state.tiers.add(t);
+    const on=pill.classList.toggle("active");
+    pill.style.background = on ? hexA(c,.14) : "";
+    pill.style.borderColor = on ? c : "";
+    pill.style.color = on ? c : "";
+    render();
+  };
+  tiersEl.appendChild(pill);
+  const item=document.createElement("span");
+  item.className="item"; item.innerHTML='<span class="sw" style="background:'+c+'"></span>'+t;
+  legendEl.appendChild(item);
+});
+
+// Expand / collapse a row on click
+document.getElementById("rows").addEventListener("click", e=>{
+  const tr = e.target.closest("tr.main");
+  if(!tr) return;
+  const name = tr.dataset.name;
+  if(expanded.has(name)) expanded.delete(name); else expanded.add(name);
+  render();
+});
+
+document.getElementById("q").addEventListener("input", e=>{ state.q=e.target.value; render(); });
+document.querySelectorAll("th.sortable").forEach(th=>{
+  th.addEventListener("click",()=>{
+    const k=th.dataset.key;
+    if(state.sort===k) state.dir*=-1; else { state.sort=k; state.dir=1; }
+    render();
+  });
+});
+document.getElementById("clear").addEventListener("click",()=>{
+  state.q=""; state.tiers.clear(); state.sort="name"; state.dir=1; expanded.clear();
+  document.getElementById("q").value="";
+  document.querySelectorAll(".tier-pill").forEach(p=>{p.classList.remove("active"); p.style.background=""; p.style.borderColor=""; p.style.color="";});
+  render();
+});
+
+render();
+</script>
+</body>
+</html>
